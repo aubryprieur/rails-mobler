@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822095223) do
+ActiveRecord::Schema.define(version: 20170822113205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,9 @@ ActiveRecord::Schema.define(version: 20170822095223) do
     t.string "price"
     t.string "url"
     t.bigint "category_id"
-    t.bigint "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_furnitures_on_category_id"
-    t.index ["review_id"], name: "index_furnitures_on_review_id"
   end
 
   create_table "furnitures_wishlists", force: :cascade do |t|
@@ -52,6 +50,8 @@ ActiveRecord::Schema.define(version: 20170822095223) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "furnitures_wishlist_id"
+    t.index ["furnitures_wishlist_id"], name: "index_reviews_on_furnitures_wishlist_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 20170822095223) do
   end
 
   add_foreign_key "furnitures", "categories"
-  add_foreign_key "furnitures", "reviews"
   add_foreign_key "furnitures_wishlists", "furnitures"
   add_foreign_key "furnitures_wishlists", "wishlists"
   add_foreign_key "reviews", "users"

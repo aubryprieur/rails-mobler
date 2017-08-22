@@ -1,4 +1,4 @@
 class Furniture < ApplicationRecord
   belongs_to :category
-  belongs_to :review
+  has_many :wishlists, through: :furnitures_wishlists
 end
