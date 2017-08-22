@@ -13,7 +13,7 @@ user1 = User.create!(
   email: "gtrupin@gmail.com",
   password:"azerty",
   password_confirmation:"azerty" ,
-  photo: "http://lorempixel.com/400/200/people/1",
+  photo: "http://lorempixel.com/400/400/people/1",
   admin: true
   )
 user2 = User.create!(
@@ -22,7 +22,7 @@ user2 = User.create!(
   email: "aubry.prieur@gmail.com",
   password:"qsdfgh",
   password_confirmation: "qsdfgh",
-  photo: "http://lorempixel.com/400/200/people/2",
+  photo: "http://lorempixel.com/400/400/people/2",
   admin: false
   )
 user3 = User.create!(
@@ -31,7 +31,7 @@ user3 = User.create!(
   email: "matelart.bertrand@gmail.com",
   password:"wxcvbn",
   password_confirmation: "wxcvbn",
-  photo: "http://lorempixel.com/400/200/people/3",
+  photo: "http://lorempixel.com/400/400/people/3",
   admin: false
   )
 user4 = User.create!(
@@ -40,7 +40,7 @@ user4 = User.create!(
   email: "ap@gmail.com",
   password:"mlkjhg",
   password_confirmation: "mlkjhg",
-  photo: "http://lorempixel.com/400/200/people/4",
+  photo: "http://lorempixel.com/400/400/people/4",
   admin: false
   )
 user5 = User.create!(
@@ -49,10 +49,10 @@ user5 = User.create!(
   email: "ab@gmail.com",
   password:"aqwxsz",
   password_confirmation: "aqwxsz",
-  photo: "http://lorempixel.com/400/200/people/5",
+  photo: "http://lorempixel.com/400/400/people/5",
   admin: false
   )
-puts 'Finished!'
+puts 'Finished! ---) USER OK'
 
 puts 'Creating categories...'
 category1 = Category.create!(name: "Bureaux")
@@ -62,7 +62,7 @@ category4 = Category.create!(name: "Petit rangement")
 category5 = Category.create!(name: "Meubles de rangement")
 category6 = Category.create!(name: "Tables")
 category7 = Category.create!(name: "Meubles TV et média")
-puts 'Finished!'
+puts 'Finished! ---) CATEGORIES OK'
 
 puts 'Creating whislists...'
 wishlist1 = Wishlist.create!(
@@ -76,21 +76,26 @@ wishlist2 = Wishlist.create!(
   user: user1,
   )
 wishlist3 = Wishlist.create!(
+  title: "Le bureau",
+  description: "trouver le nouveau bureau de travail",
+  user: user1,
+  )
+wishlist4 = Wishlist.create!(
   title: "Le salon",
   description: "Trouver un table basse",
   user: user2,
   )
-wishlist4 = Wishlist.create!(
+wishlist5 = Wishlist.create!(
   title: "Le bureau",
   description: "Trouver une  nouvelle étagère",
   user: user3,
   )
-wishlist5 = Wishlist.create!(
+wishlist6 = Wishlist.create!(
   title: "Le salon",
   description: "Trouver un nouveau meuble tv",
   user: user4,
   )
-puts 'Finished!'
+puts 'Finished! ---) WISHLIST OK'
 
 
 puts 'Creating furnitures...'
@@ -204,7 +209,7 @@ furniture10 = Furniture.create!(
   url: "http://www.ikea.com/fr/fr/catalog/products/S89061226/",
   category: category7,
   )
-puts 'Finished!'
+puts 'Finished ---) FURNITURES OK!'
 
 
 puts 'Creating furnitures-wishlists...'
@@ -217,18 +222,26 @@ furniturewishlist2 = FurnituresWishlist.create!(
   furniture: furniture2,
   )
 furniturewishlist3 = FurnituresWishlist.create!(
-  wishlist: wishlist2,
+  wishlist: wishlist1,
   furniture: furniture3,
   )
 furniturewishlist4 = FurnituresWishlist.create!(
+  wishlist: wishlist1,
+  furniture: furniture4,
+  )
+furniturewishlist5 = FurnituresWishlist.create!(
+  wishlist: wishlist2,
+  furniture: furniture3,
+  )
+furniturewishlist6 = FurnituresWishlist.create!(
   wishlist: wishlist3,
   furniture: furniture5,
   )
-furniturewishlist5 = FurnituresWishlist.create!(
+furniturewishlist7 = FurnituresWishlist.create!(
   wishlist: wishlist4,
   furniture: furniture10,
   )
-puts 'Finished!'
+puts 'Finished! ---) FURNITURES-WISHLIST OK'
 
 
 puts 'Creating reviews...'
@@ -238,18 +251,37 @@ review1 = Review.create!(
   )
 review2 = Review.create!(
   content: "Les dimensions sont nickels pour remplacer mon vieux meuble",
-  furnitures_wishlist: furniturewishlist2,
+  furnitures_wishlist: furniturewishlist1,
   )
 review3 = Review.create!(
   content: "Le meuble donne l'impression d'être solide",
-  furnitures_wishlist: furniturewishlist3,
+  furnitures_wishlist: furniturewishlist1,
   )
 review4 = Review.create!(
   content: "Je préfère une autre couleur dommage! Mais je le garde de coté quand même",
-  furnitures_wishlist: furniturewishlist4,
+  furnitures_wishlist: furniturewishlist1,
   )
 review5 = Review.create!(
   content: "Super pour la pendaison de crémaillère, la taille et la couleur c'est parfait!",
-  furnitures_wishlist: furniturewishlist5,
+  furnitures_wishlist: furniturewishlist2,
   )
-puts 'Finished!'
+review5 = Review.create!(
+  content: "Qu'est-ce qui est jaune et qui attend? HEN... Ben Jonathan...!",
+  furnitures_wishlist: furniturewishlist2,
+  )
+review5 = Review.create!(
+  content: "J'ai pas trop le style mais si je ne trouve rien d'autre, why not...",
+  furnitures_wishlist: furniturewishlist2,
+  )
+review5 = Review.create!(
+  content: "Facile à neetoyer, belle couleur, j'adore",
+  furnitures_wishlist: furniturewishlist2,
+  )
+
+
+puts 'Finished! ---) REVIEW OK! '
+
+
+puts '#################################################################################'
+puts '################################# EXCELLENT TRAVAIL #############################'
+puts '#################################################################################'
