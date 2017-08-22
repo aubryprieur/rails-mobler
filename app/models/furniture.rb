@@ -8,7 +8,7 @@ class Furniture < ApplicationRecord
   validates :photo, presence: true
   validates :height, presence: true
   validates :width, presence: true
-  validates :lenght, presence: true
+  validates :length, presence: true
   validates :price, presence: true
   validates :url, presence: true
 
