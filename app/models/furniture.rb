@@ -11,6 +11,5 @@ class Furniture < ApplicationRecord
   validates :lenght, presence: true
   validates :price, presence: true
   validates :url, presence: true
-  validates :category_id, presence: true
 
 end
