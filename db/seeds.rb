@@ -76,7 +76,7 @@ wishlist2 = Wishlist.create!(
   user: user1,
   )
 wishlist3 = Wishlist.create!(
-  title: "Le bureau",
+  title: "La chambre",
   description: "trouver le nouveau bureau de travail",
   user: user1,
   )
@@ -86,12 +86,12 @@ wishlist4 = Wishlist.create!(
   user: user2,
   )
 wishlist5 = Wishlist.create!(
-  title: "Le bureau",
+  title: "La salle de bain",
   description: "Trouver une  nouvelle étagère",
   user: user3,
   )
 wishlist6 = Wishlist.create!(
-  title: "Le salon",
+  title: "La piscine",
   description: "Trouver un nouveau meuble tv",
   user: user4,
   )
@@ -209,6 +209,7 @@ furniture10 = Furniture.create!(
   url: "http://www.ikea.com/fr/fr/catalog/products/S89061226/",
   category: category7,
   )
+
 puts 'Finished ---) FURNITURES OK!'
 
 
