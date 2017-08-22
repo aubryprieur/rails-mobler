@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TODO</title>
+    <meta charset="utf-8">
+    <title>Mobler | Easy finder
+    </title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Mobler- easy finder">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Meta Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon and Apple Icons-->
+    <link rel="icon" type="image/x-icon" href="theme/favicon.ico">
+    <link rel="icon" type="image/png" href="theme/favicon.png">
+    <link rel="apple-touch-icon" href="theme/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="theme/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="theme/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="theme/touch-icon-ipad-retina.png">
+    <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="theme/css/vendor.min.css">
+    <!-- Main Template Styles-->
+    <link id="mainStyles" rel="stylesheet" media="screen" href="theme/css/styles.min.css">
+    <!-- Modernizr-->
+    <script src="theme/js/modernizr.min.js"></script>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -12,6 +31,8 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <script src="theme/js/vendor.min.js"></script>
+    <script src="theme/js/scripts.min.js"></script>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
