@@ -3,7 +3,7 @@ class Furniture < ApplicationRecord
   has_many :furnitures_wishlists
   has_many :wishlists, through: :furnitures_wishlists, dependent: :destroy
 
-  validates :title, uniqueness: true, presence: true
+  validates :title, presence: true
   validates :description, presence: true
   validates :photo, presence: true
   validates :height, presence: true
