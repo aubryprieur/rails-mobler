@@ -1,5 +1,5 @@
 puts 'Cleaning database...'
-FurnitureWishlist.destroy_all
+FurnituresWishlist.destroy_all
 Review.destroy_all
 Furniture.destroy_all
 Wishlist.destroy_all
@@ -14,7 +14,7 @@ user1 = User.create!(
   password:"azerty",
   password_confirmation:"azerty" ,
   photo: "http://lorempixel.com/400/200/people/1"
-  admin: "true"
+  admin: "true",
   )
 user2 = User.create!(
   first_name:"Aubry",
