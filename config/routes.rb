@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'pages#home'
 
   resources :wishlist, only: [ :index, :show, :create, :update, :destroy ] do
@@ -7,6 +6,9 @@ Rails.application.routes.draw do
       resources :reviews, only: [ :create, :destroy ]
     end
   end
+
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :furnitures, only: [ :index, :show ]
 end
