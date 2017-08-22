@@ -13,8 +13,8 @@ user1 = User.create!(
   email: "gtrupin@gmail.com",
   password:"azerty",
   password_confirmation:"azerty" ,
-  photo: "http://lorempixel.com/400/200/people/1"
-  admin: "true",
+  photo: "http://lorempixel.com/400/200/people/1",
+  admin: true
   )
 user2 = User.create!(
   first_name:"Aubry",
@@ -22,8 +22,8 @@ user2 = User.create!(
   email: "aubry.prieur@gmail.com",
   password:"qsdfgh",
   password_confirmation: "qsdfgh",
-  photo: "http://lorempixel.com/400/200/people/2"
-  admin: "false"
+  photo: "http://lorempixel.com/400/200/people/2",
+  admin: false
   )
 user3 = User.create!(
   first_name:"Bertrand",
@@ -31,8 +31,8 @@ user3 = User.create!(
   email: "matelart.bertrand@gmail.com",
   password:"wxcvbn",
   password_confirmation: "wxcvbn",
-  photo: "http://lorempixel.com/400/200/people/3"
-  admin: "false"
+  photo: "http://lorempixel.com/400/200/people/3",
+  admin: false
   )
 user4 = User.create!(
   first_name:"Augustin",
@@ -40,8 +40,8 @@ user4 = User.create!(
   email: "ap@gmail.com",
   password:"mlkjhg",
   password_confirmation: "mlkjhg",
-  photo: "http://lorempixel.com/400/200/people/4"
-  admin: "false"
+  photo: "http://lorempixel.com/400/200/people/4",
+  admin: false
   )
 user5 = User.create!(
   first_name:"Aurélien",
@@ -49,8 +49,8 @@ user5 = User.create!(
   email: "ab@gmail.com",
   password:"aqwxsz",
   password_confirmation: "aqwxsz",
-  photo: "http://lorempixel.com/400/200/people/5"
-  admin: "false"
+  photo: "http://lorempixel.com/400/200/people/5",
+  admin: false
   )
 puts 'Finished!'
 
@@ -65,27 +65,27 @@ category7 = Category.create!(name: "Meubles TV et média")
 puts 'Finished!'
 
 puts 'Creating whislists...'
-wishlist1 = Whislist.create!(
+wishlist1 = Wishlist.create!(
   title: "Ma chambre",
   description: "Remplacer la commode",
   user: user1,
   )
-wishlist2 = Whislist.create!(
+wishlist2 = Wishlist.create!(
   title: "Le bureau",
   description: "trouver le nouveau bureau de travail",
   user: user1,
   )
-wishlist3 = Whislist.create!(
+wishlist3 = Wishlist.create!(
   title: "Le salon",
   description: "Trouver un table basse",
   user: user2,
   )
-wishlist4 = Whislist.create!(
+wishlist4 = Wishlist.create!(
   title: "Le bureau",
   description: "Trouver une  nouvelle étagère",
   user: user3,
   )
-wishlist5 = Whislist.create!(
+wishlist5 = Wishlist.create!(
   title: "Le salon",
   description: "Trouver un nouveau meuble tv",
   user: user4,
