@@ -28,9 +28,15 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
+
+    <%= render 'shared/navbar' %>
     <%= yield %>
+    <%= render 'shared/footer' %>
+
+
     <script src="theme/js/vendor.min.js"></script>
     <script src="theme/js/scripts.min.js"></script>
     <%= javascript_include_tag 'application' %>
+
   </body>
 </html>
