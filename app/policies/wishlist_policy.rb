@@ -1,8 +1,7 @@
 class WishlistPolicy < ApplicationPolicy
 
-
     def show?
-      record.user == current_user
+      true
     end
 end
 
