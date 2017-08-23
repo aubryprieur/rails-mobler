@@ -1,0 +1,19 @@
+<h1>VOTRE PROFIL</h1>
+
+
+
+<p>Mettre les infos du profil. First name, Last name et avatar</p>
+
+
+
+
+
+<p>Vos whislists</p>
+<br>
+<br>
+<% @wishlists.each do |wishlist| %>
+  <p> <%= wishlist.title %> </p>
+  <br>
+  <p> <%= wishlist.description %> </p>
+  <br>
+<% end %>
