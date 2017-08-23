@@ -54,16 +54,6 @@ user5 = User.create!(
   )
 puts 'Finished! ---) USER OK'
 
-puts 'Creating categories...'
-category1 = Category.create!(name: "Bureaux")
-category2 = Category.create!(name: "Rangements salle de bain")
-category3 = Category.create!(name: "Rangement vêtements")
-category4 = Category.create!(name: "Petit rangement")
-category5 = Category.create!(name: "Meubles de rangement")
-category6 = Category.create!(name: "Tables")
-category7 = Category.create!(name: "Meubles TV et média")
-puts 'Finished! ---) CATEGORIES OK'
-
 puts 'Creating whislists...'
 wishlist1 = Wishlist.create!(
   title: "Ma chambre",
@@ -99,148 +89,142 @@ puts 'Finished! ---) WISHLIST OK'
 
 
 puts 'Creating furnitures...'
-furniture1 = Furniture.create!(
-  title: "MICKE",
-  description: "Avec la série MICKE, j’ai voulu simplifier notre utilisation actuelle des ordinateurs et téléphones portables. En facilitant, par exemple, le contact avec les amis, les divers téléchargements, le travail ou encore l’impression de billets. Ce meuble comporte de nombreux détails astucieux, comme le passe-câbles qui permet de les dissimuler, ou les dimensions des éléments (de hauteur et profondeur identiques) grâce auxquelles chacun peut créer sa propre combinaison.",
-  photo: "http://www.ikea.com/fr/fr/images/products/micke-bureau-brun__0172826_PE327016_S4.JPG",
-  height: "75",
-  width: "50",
-  length: "73",
-  price: "39",
-  url: "http://www.ikea.com/fr/fr/catalog/products/20244747/",
-  category: category1,
-  )
-furniture2 = Furniture.create!(
-  title: "ALEX",
-  description: "Système intégré pour regrouper les câbles, qui restent hors de vue mais à portée de main.",
-  photo: "http://www.ikea.com/fr/fr/images/products/alex-bureau-gris__0242200_PE381727_S4.JPG",
-  height: "76",
-  width: "60",
-  length: "131",
-  price: "149",
-  url: "http://www.ikea.com/fr/fr/catalog/products/90260710/",
-  category: category1,
-  )
-furniture3 = Furniture.create!(
-  title: "ALEX",
-  description: "Système intégré pour regrouper les câbles, qui restent hors de vue mais à portée de main.",
-  photo: "http://www.ikea.com/fr/fr/images/products/alex-bureau-gris__0242200_PE381727_S4.JPG",
-  height: "78",
-  width: "48",
-  length: "80",
-  price: "64",
-  url: "http://www.ikea.com/fr/fr/catalog/products/80103344/",
-  category: category3,
-  )
-furniture4 = Furniture.create!(
-  title: "MALM",
-  description: "La maison doit être un lieu sûr pour chaque membre de la famille. C'est pourquoi une fixation de sécurité est incluse afin de fixer la commode au mur.",
-  photo: "http://www.ikea.com/fr/fr/images/products/malm-commode-tiroirs-brun__74485_PE191628_S4.JPG",
-  height: "78",
-  width: "48",
-  length: "80",
-  price: "64",
-  url: "http://www.ikea.com/fr/fr/catalog/products/80103344/",
-  category: category3,
-  )
-furniture5 = Furniture.create!(
-  title: "BESTÅ",
-  description: "Vous pouvez facilement dissimuler les câbles de la TV et tout autre équipement mais en les gardant à portée de main grâce aux ouvertures pratiquées au dos du banc TV.",
-  photo: "http://www.ikea.com/fr/fr/images/products/besta-banc-tv__0341772_PE529344_S4.JPG",
-  height: "48",
-  width: "40",
-  length: "120",
-  price: "85",
-  url: "http://www.ikea.com/fr/fr/catalog/products/S89061226/",
-  category: category7,
-  )
-furniture6 = Furniture.create!(
-  title: "MICKE",
-  description: "Avec la série MICKE, j’ai voulu simplifier notre utilisation actuelle des ordinateurs et téléphones portables. En facilitant, par exemple, le contact avec les amis, les divers téléchargements, le travail ou encore l’impression de billets. Ce meuble comporte de nombreux détails astucieux, comme le passe-câbles qui permet de les dissimuler, ou les dimensions des éléments (de hauteur et profondeur identiques) grâce auxquelles chacun peut créer sa propre combinaison.",
-  photo: "http://www.ikea.com/fr/fr/images/products/micke-bureau-brun__0172826_PE327016_S4.JPG",
-  height: "75",
-  width: "50",
-  length: "73",
-  price: "39",
-  url: "http://www.ikea.com/fr/fr/catalog/products/20244747/",
-  category: category1,
-  )
-furniture7 = Furniture.create!(
-  title: "ALEX",
-  description: "Système intégré pour regrouper les câbles, qui restent hors de vue mais à portée de main.",
-  photo: "http://www.ikea.com/fr/fr/images/products/alex-bureau-gris__0242200_PE381727_S4.JPG",
-  height: "76",
-  width: "60",
-  length: "131",
-  price: "149",
-  url: "http://www.ikea.com/fr/fr/catalog/products/90260710/",
-  category: category1,
-  )
-furniture8 = Furniture.create!(
-  title: "STOLM",
-  description: "Système intégré pour regrouper les câbles, qui restent hors de vue mais à portée de main.",
-  photo: "http://www.ikea.com/fr/fr/images/products/alex-bureau-gris__0242200_PE381727_S4.JPG",
-  height: "78",
-  width: "48",
-  length: "80",
-  price: "64",
-  url: "http://www.ikea.com/fr/fr/catalog/products/80103344/",
-  category: category3,
-  )
-furniture9 = Furniture.create!(
-  title: "MALM",
-  description: "La maison doit être un lieu sûr pour chaque membre de la famille. C'est pourquoi une fixation de sécurité est incluse afin de fixer la commode au mur.",
-  photo: "http://www.ikea.com/fr/fr/images/products/malm-commode-tiroirs-brun__74485_PE191628_S4.JPG",
-  height: "78",
-  width: "48",
-  length: "80",
-  price: "64",
-  url: "http://www.ikea.com/fr/fr/catalog/products/80103344/",
-  category: category3,
-  )
-furniture10 = Furniture.create!(
-  title: "BESTA",
-  description: "Vous pouvez facilement dissimuler les câbles de la TV et tout autre équipement mais en les gardant à portée de main grâce aux ouvertures pratiquées au dos du banc TV.",
-  photo: "http://www.ikea.com/fr/fr/images/products/besta-banc-tv__0341772_PE529344_S4.JPG",
-  height: "48",
-  width: "40",
-  length: "120",
-  price: "85",
-  url: "http://www.ikea.com/fr/fr/catalog/products/S89061226/",
-  category: category7,
-  )
+require "open-uri"
+require "nokogiri"
 
+base_url = "http://www.ikea.com"
+doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
+doc.search('#all_products_01').each do |element|
+ category = element.search('.headZeroGray b').text
+ link = element.search('.bodyTextGray a').attribute('href').text.strip
+
+ v_doc = Nokogiri::HTML(open(link).read)
+ v_doc.search('.product').each do |element|
+  img = base_url + element.search('img').attribute('src').text.strip
+  v_link = base_url + element.search('a').attribute('href').text.strip
+  title = element.search('.productTitle').text.strip
+  description = element.search('.productDesp').text.strip
+  price = element.search('.price').text.strip
+  pattern = /^\s+Largeur:\s(?<width>\d{2})\scm,\s+Profondeur:\s(?<lenght>\d{2})\scm,\s+Hauteur:\s(?<height>\d{2})\scm/
+  match_data = element.search('.size').text.match(pattern)
+  height = match_data[:height] if match_data
+  width = match_data[:width] if match_data
+  lenght = match_data[:lenght] if match_data
+  unless height.nil? || width.nil? || lenght.nil?
+    f = Furniture.create!(
+    title: title,
+    description: description,
+    photo: img,
+    height: height,
+    width: width,
+    length: lenght,
+    price: price,
+    url: v_link,
+    category: Category.find_or_create_by(name: category)
+    )
+    p f.inspect
+  end
+ end
+end
+
+doc.search('#all_products_03').each do |element|
+ category = element.search('.headZeroGray b').text
+ link = element.search('.bodyTextGray a').attribute('href').text.strip
+
+ v_doc = Nokogiri::HTML(open(link).read)
+ v_doc.search('.product').each do |element|
+  img = base_url + element.search('img').attribute('src').text.strip
+  v_link = base_url + element.search('a').attribute('href').text.strip
+  title = element.search('.productTitle').text.strip
+  description = element.search('.productDesp').text.strip
+  price = element.search('.price').text.strip
+  pattern = /^\s+Largeur:\s(?<width>\d{2})\scm,\s+Profondeur:\s(?<lenght>\d{2})\scm,\s+Hauteur:\s(?<height>\d{2})\scm/
+  match_data = element.search('.size').text.match(pattern)
+  height = match_data[:height] if match_data
+  width = match_data[:width] if match_data
+  lenght = match_data[:lenght] if match_data
+  unless height.nil? || width.nil? || lenght.nil?
+    f = Furniture.create!(
+    title: title,
+    description: description,
+    photo: img,
+    height: height,
+    width: width,
+    length: lenght,
+    price: price,
+    url: v_link,
+    category: Category.find_or_create_by(name: category)
+    )
+    p f.inspect
+  end
+ end
+end
+
+doc.search('#all_products_04').each do |element|
+ category = element.search('.headZeroGray b').text
+ link = element.search('.bodyTextGray a').attribute('href').text.strip
+
+ v_doc = Nokogiri::HTML(open(link).read)
+ v_doc.search('.product').each do |element|
+  img = base_url + element.search('img').attribute('src').text.strip
+  v_link = base_url + element.search('a').attribute('href').text.strip
+  title = element.search('.productTitle').text.strip
+  description = element.search('.productDesp').text.strip
+  pattern = /^\s+(?<price>\d+,?\d*)/
+  match_data = element.search('.price').text.match(pattern)
+  price = match_data[:price] if match_data
+  pattern = /^\s+Largeur:\s(?<width>\d{2})\scm,\s+Profondeur:\s(?<lenght>\d{2})\scm,\s+Hauteur:\s(?<height>\d{2})\scm/
+  match_data = element.search('.size').text.match(pattern)
+  height = match_data[:height] if match_data
+  width = match_data[:width] if match_data
+  lenght = match_data[:lenght] if match_data
+  unless height.nil? || width.nil? || lenght.nil?
+    f = Furniture.create!(
+    title: title,
+    description: description,
+    photo: img,
+    height: height,
+    width: width,
+    length: lenght,
+    price: price,
+    url: v_link,
+    category: Category.find_or_create_by(name: category)
+    )
+    p f.inspect
+  end
+ end
+end
 puts 'Finished ---) FURNITURES OK!'
 
 
 puts 'Creating furnitures-wishlists...'
 furniturewishlist1 = FurnituresWishlist.create!(
   wishlist: wishlist1,
-  furniture: furniture1,
+  furniture: Furniture.last,
   )
 furniturewishlist2 = FurnituresWishlist.create!(
   wishlist: wishlist1,
-  furniture: furniture2,
+  furniture: Furniture.first,
   )
 furniturewishlist3 = FurnituresWishlist.create!(
   wishlist: wishlist1,
-  furniture: furniture3,
+  furniture: Furniture.fifth,
   )
 furniturewishlist4 = FurnituresWishlist.create!(
   wishlist: wishlist1,
-  furniture: furniture4,
+  furniture: Furniture.fourth,
   )
 furniturewishlist5 = FurnituresWishlist.create!(
   wishlist: wishlist2,
-  furniture: furniture3,
+  furniture: Furniture.second_to_last,
   )
 furniturewishlist6 = FurnituresWishlist.create!(
   wishlist: wishlist3,
-  furniture: furniture5,
+  furniture: Furniture.take ,
   )
 furniturewishlist7 = FurnituresWishlist.create!(
   wishlist: wishlist4,
-  furniture: furniture10,
+  furniture: Furniture.take ,
   )
 puts 'Finished! ---) FURNITURES-WISHLIST OK'
 
