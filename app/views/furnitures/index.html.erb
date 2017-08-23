@@ -1,15 +1,22 @@
-<% @furnitures.each do |furniture| %>
+<div class="container">
+  <% @furnitures.each do |furniture| %>
   <p> <%= furniture.title %> </p>
   <p> <%= furniture.description %> </p>
   <p> <%= furniture.photo %> </p>
-  <br>
-<% end %>
-
-
-<% current_user.wishlists.each do |wishlist| %>
+  <% end %>
+  <% current_user.wishlists.each do |wishlist| %>
   <p> <%= wishlist.title %> </p>
   <p> <%= wishlist.description %> </p>
-  <br>
-<% end %>
+  <% end %>
+</div>
 
 
+
+
+<!-- <div class="card"><img class="card-img-top" src=" <% furniture.photo %>" alt="Card image">
+  <div class="card-block">
+    <h4 class="card-title"> <% furniture.title %> </h4>
+    <p class="card-text">  <% furniture.description %> </p><a class="btn btn-primary btn-sm" href="#">Go somewhere</a>
+  </div>
+</div>
+ -->
