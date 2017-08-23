@@ -14,6 +14,7 @@
 @import "components/index";
 @import "pages/index";
 
+
 // overide thème
 
 .btn {
@@ -52,4 +53,12 @@
 
 .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
     color: #fff;
+
+.presentation {
+  text-align: center;
+}
+
+.mail {
+  text-align: center;
+
 }
