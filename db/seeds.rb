@@ -91,15 +91,15 @@ puts 'Finished! ---) WISHLIST OK'
 puts 'Creating furnitures...'
 require "open-uri"
 require "nokogiri"
-
-arr1 = []
-category =[]
+arr = []
+categories = []
 base_url = "http://www.ikea.com"
 doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
 doc.search('#all_products_01').each do |element|
- category = element.search('.headZeroGray b').text
- arr1 = element.search('a').collect {|node| node.attribute('href').text.strip}
- arr1.each do |link|
+ categories = element.search('.headZeroGray b').collect {|node| node.text.strip}
+ categories.each do |category|
+  arr = element.search('.bodyTextGray a').collect {|node| node.attribute('href').text.strip}
+  arr.each do |link|
    v_doc = Nokogiri::HTML(open(link).read)
    v_doc.search('.product').each do |element|
     img = base_url + element.search('img').attribute('src').text.strip
@@ -109,7 +109,7 @@ doc.search('#all_products_01').each do |element|
     pattern = /^\s+(?<price>\d+,?\d*)/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
-    pattern = /^\s+Largeur:\s(?<width>\d{2})\scm,\s+Profondeur:\s(?<lenght>\d{2})\scm,\s+Hauteur:\s(?<height>\d{2})\scm/
+    pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
     width = match_data[:width] if match_data
@@ -130,15 +130,18 @@ doc.search('#all_products_01').each do |element|
       end
     end
   end
+ end
 end
 
 arr2 = []
+categories2 = []
 base_url = "http://www.ikea.com"
 doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
 doc.search('#all_products_04').each do |element|
- category = element.search('.headZeroGray b').text
- arr2 = element.search('a').collect {|node| node.attribute('href').text.strip}
- arr2.each do |link|
+ categories2 = element.search('.headZeroGray b').collect {|node| node.text.strip}
+ categories2.each do |category|
+  arr2 = element.search('.bodyTextGray a').collect {|node| node.attribute('href').text.strip}
+  arr2.each do |link|
    v_doc = Nokogiri::HTML(open(link).read)
    v_doc.search('.product').each do |element|
     img = base_url + element.search('img').attribute('src').text.strip
@@ -148,7 +151,7 @@ doc.search('#all_products_04').each do |element|
     pattern = /^\s+(?<price>\d+,?\d*)/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
-    pattern = /^\s+Largeur:\s(?<width>\d{2})\scm,\s+Profondeur:\s(?<lenght>\d{2})\scm,\s+Hauteur:\s(?<height>\d{2})\scm/
+    pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
     width = match_data[:width] if match_data
@@ -169,46 +172,50 @@ doc.search('#all_products_04').each do |element|
       end
     end
   end
+ end
 end
 
-# arr3 = []
-# base_url = "http://www.ikea.com"
-# doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
-# doc.search('all_products_03').each do |element|
-#  category = element.search('.headZeroGray b').text
-#  arr3 = element.search('a').collect {|node| node.attribute('href').text.strip}
-#  arr3.each do |link|
-#    v_doc = Nokogiri::HTML(open(link).read)
-#    v_doc.search('.product').each do |element|
-#     img = base_url + element.search('img').attribute('src').text.strip
-#     v_link = base_url + element.search('a').attribute('href').text.strip
-#     title = element.search('.productTitle').text.strip
-#     description = element.search('.productDesp').text.strip
-#     pattern = /^\s+(?<price>\d+,?\d*)/
-#     match_data = element.search('.price').text.match(pattern)
-#     price = match_data[:price] if match_data
-#     pattern = /^\s+Largeur:\s(?<width>\d{2})\scm,\s+Profondeur:\s(?<lenght>\d{2})\scm,\s+Hauteur:\s(?<height>\d{2})\scm/
-#     match_data = element.search('.size').text.match(pattern)
-#     height = match_data[:height] if match_data
-#     width = match_data[:width] if match_data
-#     lenght = match_data[:lenght] if match_data
-#     unless height.nil? || width.nil? || lenght.nil?
-#         f = Furniture.create!(
-#         title: title,
-#         description: description,
-#         photo: img,
-#         height: height,
-#         width: width,
-#         length: lenght,
-#         price: price,
-#         url: v_link,
-#         category: Category.find_or_create_by(name: category)
-#         )
-#         p f.inspect
-#       end
-#     end
-#   end
-# end
+arr3 = []
+categories3 = []
+base_url = "http://www.ikea.com"
+doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
+doc.search('#all_products_03').each do |element|
+ categories3 = element.search('.headZeroGray b').collect {|node| node.text.strip}
+ categories3.each do |category|
+  arr3 = element.search('.bodyTextGray a').collect {|node| node.attribute('href').text.strip}
+  arr3.each do |link|
+   v_doc = Nokogiri::HTML(open(link).read)
+   v_doc.search('.product').each do |element|
+    img = base_url + element.search('img').attribute('src').text.strip
+    v_link = base_url + element.search('a').attribute('href').text.strip
+    title = element.search('.productTitle').text.strip
+    description = element.search('.productDesp').text.strip
+    pattern = /^\s+(?<price>\d+,?\d*)/
+    match_data = element.search('.price').text.match(pattern)
+    price = match_data[:price] if match_data
+    pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
+    match_data = element.search('.size').text.match(pattern)
+    height = match_data[:height] if match_data
+    width = match_data[:width] if match_data
+    lenght = match_data[:lenght] if match_data
+    unless height.nil? || width.nil? || lenght.nil?
+        f = Furniture.create!(
+        title: title,
+        description: description,
+        photo: img,
+        height: height,
+        width: width,
+        length: lenght,
+        price: price,
+        url: v_link,
+        category: Category.find_or_create_by(name: category)
+        )
+        p f.inspect
+      end
+    end
+  end
+ end
+end
 puts 'Finished ---) FURNITURES OK!'
 
 
