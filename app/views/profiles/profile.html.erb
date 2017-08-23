@@ -1,17 +1,22 @@
 <div class="container">
-  <h1>VOTRE PROFIL</h1>
-  <p>Mettre les infos du profil. First name, Last name et avatar</p>
-  <p>Vos whislists</p>
-  <br>
-  <br>
-  <% @wishlists.each do |wishlist| %>
-  <div class="col-lg-4 margin-bottom-1x">
-    <div class="card text-center">
-      <div class="card-block">
-        <h4 class="card-title"> <%= wishlist.title %> </h4>
-        <p class="card-text"> <%= wishlist.description %> </p><a class="btn btn-outline-primary btn-sm" href="#">See this wishlist</a>
+  <div class="presentation"><h2> <%= @FirstName %> <%= @LastName %> </h2></div>
+  <div class="mail"><h5> <%= @email %> </h5></div>
+  <div class="text-center">
+    <button class="btn btn-secondary" type="button">Edit profile</button>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-4"><img class="d-block mx-auto rounded-circle mb-3" src="<%= @avatar %>" alt="Image"></div>
+  </div>
+  <div class="row">
+    <% @wishlists.each do |wishlist| %>
+    <div class="col-lg-4 margin-bottom-1x">
+      <div class="card text-center">
+        <div class="card-block">
+          <h4 class="card-title"> <%= wishlist.title %> </h4>
+          <p class="card-text"> <%= wishlist.description %> </p><a class="btn btn-outline-primary btn-sm" href="#">See this wishlist</a>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
