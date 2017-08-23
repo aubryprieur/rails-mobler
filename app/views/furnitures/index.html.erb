@@ -1,8 +1,15 @@
-<h1>Furnitures#index</h1>
-<p>Find me in app/views/furnitures/index.html.erb</p>
-
 <% @furnitures.each do |furniture| %>
   <p> <%= furniture.title %> </p>
   <p> <%= furniture.description %> </p>
+  <p> <%= furniture.photo %> </p>
   <br>
 <% end %>
+
+
+<% current_user.wishlists.each do |wishlist| %>
+  <p> <%= wishlist.title %> </p>
+  <p> <%= wishlist.description %> </p>
+  <br>
+<% end %>
+
+
