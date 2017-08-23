@@ -13,7 +13,7 @@ gem 'redis'
 gem "pundit"
 
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'sass-rails'
