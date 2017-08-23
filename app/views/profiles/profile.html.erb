@@ -2,7 +2,7 @@
   <div class="presentation"><h2> <%= @FirstName %> <%= @LastName %> </h2></div>
   <div class="mail"><h5> <%= @email %> </h5></div>
   <div class="text-center">
-    <button class="btn btn-secondary" type="button">Edit profile</button>
+    <button class="btn btn-secondary" type="button">Editer le profil</button>
   </div>
   <div class="row">
     <div class="col-sm-3 col-sm-offset-4"><img class="d-block mx-auto rounded-circle mb-3" src="<%= @avatar %>" alt="Image"></div>
@@ -13,7 +13,8 @@
       <div class="card text-center">
         <div class="card-block">
           <h4 class="card-title"> <%= wishlist.title %> </h4>
-          <p class="card-text"> <%= wishlist.description %> </p><a class="btn btn-outline-primary btn-sm" href="#">See this wishlist</a>
+          <p class="card-text"> <%= wishlist.description %> </p>
+          <%= link_to "Voir cette liste", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
         </div>
       </div>
     </div>
