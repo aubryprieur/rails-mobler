@@ -2,7 +2,11 @@ class FurnituresController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show]
 
   def index
-    @furnitures = policy_scope(Furniture)
+    if params[:search][:category] != ""
+      @furnitures = policy_scope(Furniture).where(category: params[:search][:category])
+    else
+      @furnitures = policy_scope(Furniture)
+    end
   end
 
   def show

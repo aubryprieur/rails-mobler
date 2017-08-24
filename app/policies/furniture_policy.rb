@@ -4,6 +4,12 @@ class FurniturePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def index?
+    true
+  end
+
+
   def destroy?
     true
   end

@@ -3,6 +3,8 @@ class Furniture < ApplicationRecord
   has_many :furnitures_wishlists
   has_many :wishlists, through: :furnitures_wishlists, dependent: :destroy
 
+  scope :category, -> (category) { where category: category }
+
   validates :title, presence: true
   validates :description, presence: true
   validates :photo, presence: true
