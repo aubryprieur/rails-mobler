@@ -1,24 +1,54 @@
-<div class="container">
-  <div class="presentation"><h2> <%= @FirstName %> <%= @LastName %> </h2></div>
-  <div class="mail"><h5> <%= @email %> </h5></div>
-  <div class="text-center">
-    <button class="btn btn-secondary" type="button">Editer le profil</button>
-  </div>
+<div class="container padding-bottom-3x mb-2">
   <div class="row">
-    <div class="col-sm-3 col-sm-offset-4"><img class="d-block mx-auto rounded-circle mb-3" src="<%= @avatar %>" alt="Image"></div>
+    <div class="col-lg-4">
+            <aside class="user-info-wrapper">
+              <div class="user-cover" style="background-image: url(theme/img/account/user-cover-img.jpg);">
+
+              </div>
+              <div class="user-info">
+                <div class="user-avatar"><a class="edit-avatar" href="#"></a><img src=" <%= @avatar %>" alt="User"></div>
+                <div class="user-data">
+                  <h4> <%= @FirstName %> </h4> <h4> <%= @LastName %> </h4> <span> <%= @email %> </span>
+                </div>
+              </div>
+            </aside>
+            <nav class="list-group"></nav>
+          </div>
+    <div class="col-lg-8">
+      <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+      <div class="table-responsive wishlist-table margin-bottom-none">
+        <table class="table">
+          <thead>
+            <tr>
+              <th> Vos wishlists</th>
+              <th class="text-center">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="row">
+                  <% @wishlists.each do |wishlist| %>
+                  <div class="col-lg-4 margin-bottom-1x">
+                    <div class="card text-center">
+                      <div class="card-block">
+                        <h4 class="card-title"> <%= wishlist.title %> </h4>
+                        <p class="card-text"> <%= wishlist.description %> </p>
+                        <%= link_to "Voir cette liste", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
+                        <%= link_to "Delete", wishlist_path(wishlist), :method => 'delete' %>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <tr></tr>
+        <tr></tr>
+      </tbody>
+    </table>
   </div>
-  <div class="row">
-    <% @wishlists.each do |wishlist| %>
-    <div class="col-lg-4 margin-bottom-1x">
-      <div class="card text-center">
-        <div class="card-block">
-          <h4 class="card-title"> <%= wishlist.title %> </h4>
-          <p class="card-text"> <%= wishlist.description %> </p>
-          <%= link_to "Voir cette liste", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
-          <%= link_to "Delete", wishlist_path(wishlist), :method => 'delete' %>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
+</div>
+</div>
 </div>
