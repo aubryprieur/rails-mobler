@@ -1,5 +1,6 @@
 <div class="col-xs-12 col-sm-3">
   <div class="product-card">
+    <div class="product-badge text-danger"> <%= furniture.category.name %> </div>
     <%= image_tag furniture.photo, class: "product-thumb" %>
     <h3 class="product-title"><a href="shop-single.html"><%= furniture.title %></a></h3>
     <h4 class="product-price">
@@ -7,7 +8,7 @@
     </h4>
     <div class="product-buttons">
       <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-      <%= link_to "Buy", furniture.url, class: "btn btn-outline-primary btn-sm" %>
+      <%= link_to "Buy", furniture.url, target: "_blank", class: "btn btn-outline-primary btn-sm" %>
     </div>
   </div>
 </div>

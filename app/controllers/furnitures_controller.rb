@@ -1,7 +1,11 @@
 class FurnituresController < ApplicationController
 
   def index
-    @furnitures = policy_scope(Furniture)
+    if params[:search][:category] != ""
+      @furnitures = policy_scope(Furniture).where(category: params[:search][:category])
+    else
+      @furnitures = policy_scope(Furniture)
+    end
   end
 
   def show
