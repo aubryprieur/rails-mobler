@@ -1,13 +1,13 @@
+<div class="container">
 <div class="wishlist-title"><h1><strong><%= @wishlist.title %></strong></h1></div>
 <div class="wishlist-description"><p> <%= @wishlist.description %></p></div>
 <%= link_to "Supprimer la wishlist", wishlist_path(@wishlist), :method => 'delete' %>
 
-
+<div class="row">
 <% @furnitures.each do |furniture| %>
-  <p> <%= furniture.title %> </p>
-  <p> <%= furniture.description %> </p>>
-  <p> <%= furniture.photo %> </p>
-  <%= link_to "Supprimer ce meuble", furniture_path(furniture), :method => 'delete' %>
+ <%= render 'furnitures/card', furniture: furniture %>
 <% end %>
+</div>
 
 
+</div>
