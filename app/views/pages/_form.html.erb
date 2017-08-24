@@ -2,7 +2,10 @@
   <div class="form-inputs">
     <%= simple_form_for :search, method: :get, url: furnitures_path do |f| %>
       <%= f.input :category, collection: @categories, class: 'form-control' %>
-      <%= f.submit 'Rechercher', :class => 'btn btn-primary scale-up delay-1' %>
+      <%= f.input :min_length, class: "form-control" %><%= f.input :max_length, class: "form-control" %>
+      <%= f.input :min_width, class: "form-control" %><%= f.input :max_width, class: "form-control" %>
+      <%= f.input :min_height, class: "form-control" %><%= f.input :max_height, class: "form-control" %>
+      <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1' %>
     <% end %>
   </div>
 

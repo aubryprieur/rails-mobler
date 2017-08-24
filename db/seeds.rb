@@ -122,10 +122,10 @@ doc.search('#all_products_01').each do |element|
         title: title,
         description: description,
         photo: img,
-        height: height,
-        width: width,
-        length: lenght,
-        price: price,
+        height: height.to_i,
+        width: width.to_i,
+        length: lenght.to_i,
+        price: price.to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories[0])
         )
@@ -141,7 +141,7 @@ doc.search('#all_products_01').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    pattern = /^\s+(?<price>\d+,?\d*)/
+    pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -154,10 +154,10 @@ doc.search('#all_products_01').each do |element|
         title: title,
         description: description,
         photo: img,
-        height: height,
-        width: width,
-        length: lenght,
-        price: price,
+        height: height.to_i,
+        width: width.to_i,
+        length: lenght.to_i,
+        price: price.to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories[1])
         )
@@ -173,7 +173,7 @@ doc.search('#all_products_01').each do |element|
       v_link = base_url + element.search('a').attribute('href').text.strip
       title = element.search('.productTitle').text.strip
       description = element.search('.productDesp').text.strip
-      pattern = /^\s+(?<price>\d+,?\d*)/
+      pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
       match_data = element.search('.price').text.match(pattern)
       price = match_data[:price] if match_data
       pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -186,10 +186,10 @@ doc.search('#all_products_01').each do |element|
           title: title,
           description: description,
           photo: img,
-          height: height,
-          width: width,
-          length: lenght,
-          price: price,
+          height: height.to_i,
+          width: width.to_i,
+          length: lenght.to_i,
+          price: price.to_i,
           url: v_link,
           category: Category.find_or_create_by(name: categories[2])
           )
@@ -217,7 +217,7 @@ doc.search('#all_products_04').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    pattern = /^\s+(?<price>\d+,?\d*)/
+    pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -230,10 +230,10 @@ doc.search('#all_products_04').each do |element|
         title: title,
         description: description,
         photo: img,
-        height: height,
-        width: width,
-        length: lenght,
-        price: price,
+        height: height.to_i,
+        width: width.to_i,
+        length: lenght.to_i,
+        price: price.to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories2[0])
         )
@@ -249,7 +249,7 @@ doc.search('#all_products_04').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    pattern = /^\s+(?<price>\d+,?\d*)/
+    pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -262,10 +262,10 @@ doc.search('#all_products_04').each do |element|
         title: title,
         description: description,
         photo: img,
-        height: height,
-        width: width,
-        length: lenght,
-        price: price,
+        height: height.to_i,
+        width: width.to_i,
+        length: lenght.to_i,
+        price: price.to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories2[1])
         )
@@ -281,7 +281,7 @@ doc.search('#all_products_04').each do |element|
       v_link = base_url + element.search('a').attribute('href').text.strip
       title = element.search('.productTitle').text.strip
       description = element.search('.productDesp').text.strip
-      pattern = /^\s+(?<price>\d+,?\d*)/
+      pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
       match_data = element.search('.price').text.match(pattern)
       price = match_data[:price] if match_data
       pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -294,10 +294,10 @@ doc.search('#all_products_04').each do |element|
           title: title,
           description: description,
           photo: img,
-          height: height,
-          width: width,
-          length: lenght,
-          price: price,
+          height: height.to_i,
+          width: width.to_i,
+          length: lenght.to_i,
+          price: price.to_i,
           url: v_link,
           category: Category.find_or_create_by(name: categories2[2])
           )
@@ -324,7 +324,7 @@ doc.search('#all_products_03').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    pattern = /^\s+(?<price>\d+,?\d*)/
+    pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -337,10 +337,10 @@ doc.search('#all_products_03').each do |element|
         title: title,
         description: description,
         photo: img,
-        height: height,
-        width: width,
-        length: lenght,
-        price: price,
+        height: height.to_i,
+        width: width.to_i,
+        length: lenght.to_i,
+        price: price.to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories3[0])
         )
@@ -356,7 +356,7 @@ doc.search('#all_products_03').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    pattern = /^\s+(?<price>\d+,?\d*)/
+    pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -369,10 +369,10 @@ doc.search('#all_products_03').each do |element|
         title: title,
         description: description,
         photo: img,
-        height: height,
-        width: width,
-        length: lenght,
-        price: price,
+        height: height.to_i,
+        width: width.to_i,
+        length: lenght.to_i,
+        price: price.to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories3[1])
         )
@@ -388,7 +388,7 @@ doc.search('#all_products_03').each do |element|
       v_link = base_url + element.search('a').attribute('href').text.strip
       title = element.search('.productTitle').text.strip
       description = element.search('.productDesp').text.strip
-      pattern = /^\s+(?<price>\d+,?\d*)/
+      pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
       match_data = element.search('.price').text.match(pattern)
       price = match_data[:price] if match_data
       pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -401,10 +401,10 @@ doc.search('#all_products_03').each do |element|
           title: title,
           description: description,
           photo: img,
-          height: height,
-          width: width,
-          length: lenght,
-          price: price,
+          height: height.to_i,
+          width: width.to_i,
+          length: lenght.to_i,
+          price: price.to_i,
           url: v_link,
           category: Category.find_or_create_by(name: categories3[2])
           )
@@ -429,7 +429,7 @@ doc.search('#all_products_02').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    pattern = /^\s+(?<price>\d+,?\d*)/
+    pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
@@ -442,10 +442,10 @@ doc.search('#all_products_02').each do |element|
         title: title,
         description: description,
         photo: img,
-        height: height,
-        width: width,
-        length: lenght,
-        price: price,
+        height: height.to_i,
+        width: width.to_i,
+        length: lenght.to_i,
+        price: price.to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories4[1])
         )
