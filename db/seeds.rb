@@ -91,15 +91,18 @@ puts 'Finished! ---) WISHLIST OK'
 puts 'Creating furnitures...'
 require "open-uri"
 require "nokogiri"
-arr = []
+
 categories = []
 base_url = "http://www.ikea.com"
 doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
 doc.search('#all_products_01').each do |element|
- categories = element.search('.headZeroGray b').collect {|node| node.text.strip}
- categories.each do |category|
-  arr = element.search('.bodyTextGray a').collect {|node| node.attribute('href').text.strip}
-  arr.each do |link|
+  categories = element.search('.headZeroGray b').collect {|node| node.text.strip}
+
+ cat1_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10661/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10662/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/16238/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10663/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10664/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/20926/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/20855/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/16239/"]
+ cat2_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10382/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/10451/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10384/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10410/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/11465/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/20802/"]
+ cat3_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10716/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10717/", "http://www.ikea.com/fr/fr/catalog/categories/departments/dining/21825/", "http://www.ikea.com/fr/fr/catalog/categories/departments/dining/19145/", "http://www.ikea.com/fr/fr/catalog/categories/departments/dining/20862/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/20656-2/", "http://www.ikea.com/fr/fr/catalog/categories/departments/outdoor/21965/", "http://www.ikea.com/fr/fr/catalog/categories/departments/outdoor/21967/"]
+
+  cat1_urls.each do |link|
    v_doc = Nokogiri::HTML(open(link).read)
    v_doc.search('.product').each do |element|
     img = base_url + element.search('img').attribute('src').text.strip
@@ -124,24 +127,90 @@ doc.search('#all_products_01').each do |element|
         length: lenght,
         price: price,
         url: v_link,
-        category: Category.find_or_create_by(name: category)
+        category: Category.find_or_create_by(name: categories[0])
         )
         p f.inspect
       end
     end
   end
- end
+
+  cat2_urls.each do |link|
+   v_doc = Nokogiri::HTML(open(link).read)
+   v_doc.search('.product').each do |element|
+    img = base_url + element.search('img').attribute('src').text.strip
+    v_link = base_url + element.search('a').attribute('href').text.strip
+    title = element.search('.productTitle').text.strip
+    description = element.search('.productDesp').text.strip
+    pattern = /^\s+(?<price>\d+,?\d*)/
+    match_data = element.search('.price').text.match(pattern)
+    price = match_data[:price] if match_data
+    pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
+    match_data = element.search('.size').text.match(pattern)
+    height = match_data[:height] if match_data
+    width = match_data[:width] if match_data
+    lenght = match_data[:lenght] if match_data
+    unless height.nil? || width.nil? || lenght.nil?
+        f = Furniture.create!(
+        title: title,
+        description: description,
+        photo: img,
+        height: height,
+        width: width,
+        length: lenght,
+        price: price,
+        url: v_link,
+        category: Category.find_or_create_by(name: categories[1])
+        )
+        p f.inspect
+      end
+    end
+  end
+
+    cat3_urls.each do |link|
+     v_doc = Nokogiri::HTML(open(link).read)
+     v_doc.search('.product').each do |element|
+      img = base_url + element.search('img').attribute('src').text.strip
+      v_link = base_url + element.search('a').attribute('href').text.strip
+      title = element.search('.productTitle').text.strip
+      description = element.search('.productDesp').text.strip
+      pattern = /^\s+(?<price>\d+,?\d*)/
+      match_data = element.search('.price').text.match(pattern)
+      price = match_data[:price] if match_data
+      pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
+      match_data = element.search('.size').text.match(pattern)
+      height = match_data[:height] if match_data
+      width = match_data[:width] if match_data
+      lenght = match_data[:lenght] if match_data
+      unless height.nil? || width.nil? || lenght.nil?
+          f = Furniture.create!(
+          title: title,
+          description: description,
+          photo: img,
+          height: height,
+          width: width,
+          length: lenght,
+          price: price,
+          url: v_link,
+          category: Category.find_or_create_by(name: categories[2])
+          )
+          p f.inspect
+        end
+      end
+    end
 end
 
-arr2 = []
+
 categories2 = []
 base_url = "http://www.ikea.com"
 doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
 doc.search('#all_products_04').each do |element|
- categories2 = element.search('.headZeroGray b').collect {|node| node.text.strip}
- categories2.each do |category|
-  arr2 = element.search('.bodyTextGray a').collect {|node| node.attribute('href').text.strip}
-  arr2.each do |link|
+  categories2 = element.search('.headZeroGray b').collect {|node| node.text.strip}
+
+ cat4_urls = ["http://www.ikea.com/fr/fr/catalog/categories/business/20649/", "http://www.ikea.com/fr/fr/catalog/categories/business/20652/", "http://www.ikea.com/fr/fr/catalog/categories/business/10711/", "http://www.ikea.com/fr/fr/catalog/categories/business/10551/", "http://www.ikea.com/fr/fr/catalog/categories/business/10385/", "http://www.ikea.com/fr/fr/catalog/categories/business/10712/", "http://www.ikea.com/fr/fr/catalog/categories/business/20502/", "http://www.ikea.com/fr/fr/catalog/categories/business/16195/"]
+ cat5_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/20719/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/20723/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/20724/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/20802/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/20490/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/10736/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/10555/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bathroom/bathroom_dep_textiles/"]
+ cat6_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/secondary_storage/10397/", "http://www.ikea.com/fr/fr/catalog/categories/departments/living_room/10550/", "http://www.ikea.com/fr/fr/catalog/categories/departments/laundry/20597/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/16274/", "http://www.ikea.com/fr/fr/catalog/categories/departments/workspaces/16213/", "http://www.ikea.com/fr/fr/catalog/categories/departments/kitchen/16200/", "http://www.ikea.com/fr/fr/catalog/categories/departments/small_storage/15937/", "http://www.ikea.com/fr/fr/catalog/categories/departments/secondary_storage/18741/"]
+
+  cat4_urls.each do |link|
    v_doc = Nokogiri::HTML(open(link).read)
    v_doc.search('.product').each do |element|
     img = base_url + element.search('img').attribute('src').text.strip
@@ -166,24 +235,89 @@ doc.search('#all_products_04').each do |element|
         length: lenght,
         price: price,
         url: v_link,
-        category: Category.find_or_create_by(name: category)
+        category: Category.find_or_create_by(name: categories2[0])
         )
         p f.inspect
       end
     end
   end
- end
+
+  cat5_urls.each do |link|
+   v_doc = Nokogiri::HTML(open(link).read)
+   v_doc.search('.product').each do |element|
+    img = base_url + element.search('img').attribute('src').text.strip
+    v_link = base_url + element.search('a').attribute('href').text.strip
+    title = element.search('.productTitle').text.strip
+    description = element.search('.productDesp').text.strip
+    pattern = /^\s+(?<price>\d+,?\d*)/
+    match_data = element.search('.price').text.match(pattern)
+    price = match_data[:price] if match_data
+    pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
+    match_data = element.search('.size').text.match(pattern)
+    height = match_data[:height] if match_data
+    width = match_data[:width] if match_data
+    lenght = match_data[:lenght] if match_data
+    unless height.nil? || width.nil? || lenght.nil?
+        f = Furniture.create!(
+        title: title,
+        description: description,
+        photo: img,
+        height: height,
+        width: width,
+        length: lenght,
+        price: price,
+        url: v_link,
+        category: Category.find_or_create_by(name: categories2[1])
+        )
+        p f.inspect
+      end
+    end
+  end
+
+    cat6_urls.each do |link|
+     v_doc = Nokogiri::HTML(open(link).read)
+     v_doc.search('.product').each do |element|
+      img = base_url + element.search('img').attribute('src').text.strip
+      v_link = base_url + element.search('a').attribute('href').text.strip
+      title = element.search('.productTitle').text.strip
+      description = element.search('.productDesp').text.strip
+      pattern = /^\s+(?<price>\d+,?\d*)/
+      match_data = element.search('.price').text.match(pattern)
+      price = match_data[:price] if match_data
+      pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
+      match_data = element.search('.size').text.match(pattern)
+      height = match_data[:height] if match_data
+      width = match_data[:width] if match_data
+      lenght = match_data[:lenght] if match_data
+      unless height.nil? || width.nil? || lenght.nil?
+          f = Furniture.create!(
+          title: title,
+          description: description,
+          photo: img,
+          height: height,
+          width: width,
+          length: lenght,
+          price: price,
+          url: v_link,
+          category: Category.find_or_create_by(name: categories2[2])
+          )
+          p f.inspect
+        end
+      end
+    end
 end
 
-arr3 = []
 categories3 = []
 base_url = "http://www.ikea.com"
 doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
 doc.search('#all_products_03').each do |element|
- categories3 = element.search('.headZeroGray b').collect {|node| node.text.strip}
- categories3.each do |category|
-  arr3 = element.search('.bodyTextGray a').collect {|node| node.attribute('href').text.strip}
-  arr3.each do |link|
+  categories3 = element.search('.headZeroGray b').collect {|node| node.text.strip}
+
+ cat7_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/19086/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/19053/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/11466/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/10452/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/16274/", "http://www.ikea.com/fr/fr/catalog/categories/departments/hallway/10455/", "http://www.ikea.com/fr/fr/catalog/categories/departments/hallway/10456/"]
+ cat8_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/19059/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/20656-2/"]
+ cat9_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/24823/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/24828/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/24827/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/24825/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/24826/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/24822/", "http://www.ikea.com/fr/fr/catalog/categories/departments/bedroom/24824/"]
+
+  cat7_urls.each do |link|
    v_doc = Nokogiri::HTML(open(link).read)
    v_doc.search('.product').each do |element|
     img = base_url + element.search('img').attribute('src').text.strip
@@ -208,14 +342,119 @@ doc.search('#all_products_03').each do |element|
         length: lenght,
         price: price,
         url: v_link,
-        category: Category.find_or_create_by(name: category)
+        category: Category.find_or_create_by(name: categories3[0])
         )
         p f.inspect
       end
     end
   end
- end
+
+  cat8_urls.each do |link|
+   v_doc = Nokogiri::HTML(open(link).read)
+   v_doc.search('.product').each do |element|
+    img = base_url + element.search('img').attribute('src').text.strip
+    v_link = base_url + element.search('a').attribute('href').text.strip
+    title = element.search('.productTitle').text.strip
+    description = element.search('.productDesp').text.strip
+    pattern = /^\s+(?<price>\d+,?\d*)/
+    match_data = element.search('.price').text.match(pattern)
+    price = match_data[:price] if match_data
+    pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
+    match_data = element.search('.size').text.match(pattern)
+    height = match_data[:height] if match_data
+    width = match_data[:width] if match_data
+    lenght = match_data[:lenght] if match_data
+    unless height.nil? || width.nil? || lenght.nil?
+        f = Furniture.create!(
+        title: title,
+        description: description,
+        photo: img,
+        height: height,
+        width: width,
+        length: lenght,
+        price: price,
+        url: v_link,
+        category: Category.find_or_create_by(name: categories3[1])
+        )
+        p f.inspect
+      end
+    end
+  end
+
+    cat9_urls.each do |link|
+     v_doc = Nokogiri::HTML(open(link).read)
+     v_doc.search('.product').each do |element|
+      img = base_url + element.search('img').attribute('src').text.strip
+      v_link = base_url + element.search('a').attribute('href').text.strip
+      title = element.search('.productTitle').text.strip
+      description = element.search('.productDesp').text.strip
+      pattern = /^\s+(?<price>\d+,?\d*)/
+      match_data = element.search('.price').text.match(pattern)
+      price = match_data[:price] if match_data
+      pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
+      match_data = element.search('.size').text.match(pattern)
+      height = match_data[:height] if match_data
+      width = match_data[:width] if match_data
+      lenght = match_data[:lenght] if match_data
+      unless height.nil? || width.nil? || lenght.nil?
+          f = Furniture.create!(
+          title: title,
+          description: description,
+          photo: img,
+          height: height,
+          width: width,
+          length: lenght,
+          price: price,
+          url: v_link,
+          category: Category.find_or_create_by(name: categories3[2])
+          )
+          p f.inspect
+        end
+      end
+    end
 end
+
+categories4 = []
+base_url = "http://www.ikea.com"
+doc = Nokogiri::HTML(open('http://www.ikea.com/ms/fr_FR/produits.html').read)
+doc.search('#all_products_02').each do |element|
+  categories4 = element.search('.headZeroGray b').collect {|node| node.text.strip}
+
+ cat10_urls = ["http://www.ikea.com/fr/fr/catalog/categories/departments/ikea_kitchens/23598/", "http://www.ikea.com/fr/fr/catalog/categories/departments/ikea_kitchens/16200/", "http://www.ikea.com/fr/fr/catalog/categories/departments/ikea_kitchens/10471/"]
+
+  cat10_urls.each do |link|
+   v_doc = Nokogiri::HTML(open(link).read)
+   v_doc.search('.product').each do |element|
+    img = base_url + element.search('img').attribute('src').text.strip
+    v_link = base_url + element.search('a').attribute('href').text.strip
+    title = element.search('.productTitle').text.strip
+    description = element.search('.productDesp').text.strip
+    pattern = /^\s+(?<price>\d+,?\d*)/
+    match_data = element.search('.price').text.match(pattern)
+    price = match_data[:price] if match_data
+    pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
+    match_data = element.search('.size').text.match(pattern)
+    height = match_data[:height] if match_data
+    width = match_data[:width] if match_data
+    lenght = match_data[:lenght] if match_data
+    unless height.nil? || width.nil? || lenght.nil?
+        f = Furniture.create!(
+        title: title,
+        description: description,
+        photo: img,
+        height: height,
+        width: width,
+        length: lenght,
+        price: price,
+        url: v_link,
+        category: Category.find_or_create_by(name: categories4[1])
+        )
+        p f.inspect
+      end
+    end
+  end
+end
+
 puts 'Finished ---) FURNITURES OK!'
 
 
