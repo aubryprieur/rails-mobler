@@ -7,10 +7,14 @@
     <%= furniture.price %> €
     </h4>
     <div class="product-buttons">
-      <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+      <% if user_signed_in? %>
+        <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="modal" data-target="#modal<%=furniture.id%>" title="Whishlist"><i class="icon-heart"></i></button>
+        <%= render 'add_to_wishlist', furniture: furniture %>
+      <% else %>
+        <a href="<%= new_user_session_path%>" class="btn btn-outline-secondary btn-sm btn-wishlist"><i class="icon-heart"></i></a>
+      <% end %>
       <%= link_to "Buy", furniture.url, target: "_blank", class: "btn btn-outline-primary btn-sm" %>
     </div>
   </div>
 </div>
-
 
