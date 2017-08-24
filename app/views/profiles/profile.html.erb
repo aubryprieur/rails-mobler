@@ -15,6 +15,7 @@
           <h4 class="card-title"> <%= wishlist.title %> </h4>
           <p class="card-text"> <%= wishlist.description %> </p>
           <%= link_to "Voir cette liste", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
+          <%= link_to "Delete", wishlist_path(wishlist), :method => 'delete' %>
         </div>
       </div>
     </div>
