@@ -11,7 +11,6 @@ class WishlistController < ApplicationController
     @wishlist.destroy
     authorize @wishlist
     redirect_to profile_path
-
   end
 
 #A configurer en récupérant les infos de la modale popup dans l'index de furnitures
