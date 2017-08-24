@@ -27,13 +27,6 @@
             <li class="nav-item">
               <div class="account"><a href="#"></a><i class="icon-head"></i>
                 <ul class="toolbar-dropdown">
-<!--                   <li class="sub-menu-title"></li>
-                    <li>
-                      <%= link_to profile_path do %>
-                        <%= "My wishlist" %>
-                      <% end %>
-                    </li>
-                  <li class="sub-menu-separator"></li> -->
                   <li>
                     <%= link_to destroy_user_session_path, method: :delete do %>
                       <i class="icon-unlock"></i>  <%= t(".sign_out", default: "Se déconnecter") %>
@@ -46,8 +39,8 @@
         </div>
       </div>
     </div>
-
     <% else %>
+
       <!-- Login link (when logged out) -->
 
     <div class="toolbar">
@@ -58,9 +51,6 @@
         </div>
       </div>
     </div>
-
-
-
 
     <% end %>
 

@@ -1,0 +1,24 @@
+<div class="modal fade" id="modal<%= furniture.id %>" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Ajouter à une wishlist</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <h1><%= furniture.title%></h1>
+      <div class="modal-body">
+        <div class="col-md-12 margin-bottom-2x">
+          <nav class="list-group">
+            <% current_user.wishlists.each do |wishlist| %>
+              <a class="list-group-item" href="#"><%= wishlist.title %></a>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary btn-sm" type="button">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
