@@ -1,16 +1,14 @@
 <div class="container">
+  <div class="row">
 
   <% @furnitures.each do |furniture| %>
-  <p> <%= furniture.title %> </p>
-  <p> <%= furniture.description %> </p>
-  <p> <%= furniture.photo %> </p>
+    <%= render 'card', furniture: furniture %>
   <% end %>
+</div>
 
 
   <% current_user.wishlists.each do |wishlist| %>
   <p> <%= wishlist.title %> </p>
   <p> <%= wishlist.description %> </p>
   <% end %>
-
 </div>
-
