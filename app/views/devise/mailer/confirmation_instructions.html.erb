@@ -1,5 +1,18 @@
-<p>Welcome <%= @email %>!</p>
+<div class="offcanvas-wrapper">
+  <div class="container">
+    <div class="row justify-content-sm-center">
+      <div class="col-xs-12 col-sm-4">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p class="text-center">Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+        <p class="text-center">You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+        <p class="text-center"><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+      </div>
+    </div>
+  </div>
+</div>

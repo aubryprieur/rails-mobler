@@ -1,13 +1,22 @@
-<div class="wishlist-title"><h1><strong><%= @wishlist.title %></strong></h1></div>
-<div class="wishlist-description"><p> <%= @wishlist.description %></p></div>
-<%= link_to "Supprimer la wishlist", wishlist_path(@wishlist), :method => 'delete' %>
-
-
-<% @furnitures.each do |furniture| %>
-  <p> <%= furniture.title %> </p>
-  <p> <%= furniture.description %> </p>>
-  <p> <%= furniture.photo %> </p>
-  <%= link_to "Supprimer ce meuble", furniture_path(furniture), :method => 'delete' %>
-<% end %>
-
-
+<div class="page-title">
+  <div class="container">
+    <div class="column">
+      <h1><%= @wishlist.title %></h1>
+    </div>
+    <div class="column">
+      <ul class="breadcrumbs">
+        <li>
+          <%= link_to "Supprimer la wishlist", wishlist_path(@wishlist), :method => 'delete' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="wishlist-description"><h4> <%= @wishlist.description %></h4></div>
+  <div class="row">
+    <% @furnitures.each do |furniture| %>
+    <%= render 'furnitures/card', furniture: furniture %>
+    <% end %>
+  </div>
+</div>
