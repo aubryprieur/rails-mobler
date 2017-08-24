@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-
   def profile
     @wishlists = current_user.wishlists
     @FirstName = current_user.first_name
@@ -8,6 +7,5 @@ class ProfilesController < ApplicationController
     @email = current_user.email
     authorize :profile
   end
-
 
 end
