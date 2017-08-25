@@ -17,7 +17,7 @@
               <% current_user.wishlists.each do |wishlist| %>
                 <div class="list-group-item justify-content-between">
                   <%= wishlist.title %>
-                  <span><%= link_to 'ajouter', wishlist_wishlist_items_path(wishlist_id: wishlist.id, furniture_id: furniture.id), class: 'btn btn-sm btn-outline-primary', method: :post %></span>
+                  <span><%= link_to 'ajouter', wishlist_add_item_path(wishlist_id: wishlist.id, furniture_id: furniture.id), class: 'btn btn-sm btn-outline-primary', method: :post %></span>
                 </div>
               <% end %>
             </nav>
