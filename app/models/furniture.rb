@@ -2,6 +2,8 @@ class Furniture < ApplicationRecord
   belongs_to :category
   has_many :furnitures_wishlists
   has_many :wishlists, through: :furnitures_wishlists, dependent: :destroy
+  has_many :reviews, through: :furnitures_wishlists
+
 
   scope :category, -> (category) { where category: category }
 

@@ -16,7 +16,30 @@
   <div class="wishlist-description"><h4> <%= @wishlist.description %></h4></div>
   <div class="row">
     <% @furnitures.each do |furniture| %>
-    <%= render 'furnitures/card', furniture: furniture %>
+    <div class="col-sm-3 margin-bottom-2x pb-2">
+      <div class="card"><img class="card-img-top" src="<%= furniture.photo %>" alt="Card image">
+        <div class="card-block">
+          <h4 class="card-title"> <%= furniture.title %></h4>
+          <p class="card-text">
+            <ul>
+              <li> <strong>Length :</strong><%= furniture.length %> cm </li>
+              <li> <strong>Height :</strong> <%= furniture.height %> cm</li>
+              <li> <strong>Width :</strong> <%= furniture.width %> cm</li>
+              <li> <strong>Price :</strong> <%= furniture.price %> €</li>
+            </ul>
+          </p>
+          <a class="btn btn-primary btn-sm" href=" <% link_to furniture_path(furniture), :method => 'delete' %>">Delete</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 margin-bottom-2x pb-2">
+      <% furniture.reviews.each do |review| %>
+      <ul>
+        <li><%=  review.content %></li>
+      </ul>
+      <% end %>
+    </div>
     <% end %>
   </div>
 </div>
+
