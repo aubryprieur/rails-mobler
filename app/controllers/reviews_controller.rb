@@ -1,4 +1,10 @@
 class ReviewsController < ApplicationController
-  def show
+
+
+  def create
+    @furniture = Furniture.find(params[:furniture_id])
+    @review = Review.new(review_params)
+    @review.furniture = Furniture.find(params[:furniture_id])
+    @review.save
   end
 end
