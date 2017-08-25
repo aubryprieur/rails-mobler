@@ -109,7 +109,7 @@ doc.search('#all_products_01').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    pattern = /^\s+(?<price>\d+,?\d*)/
+    pattern = /^\s+(?<price>((\d\s\d+)|(\d+,?\d*)))/
     match_data = element.search('.price').text.match(pattern)
     price = match_data[:price] if match_data
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
