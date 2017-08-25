@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'reviews/show'
+
   root to: 'pages#home'
 
   get '/profile' => 'profiles#profile'

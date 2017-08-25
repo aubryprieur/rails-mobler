@@ -17,6 +17,7 @@
   <div class="row">
     <% @furnitures.each do |furniture| %>
     <%= render 'furnitures/card', furniture: furniture %>
+    <%= @review %>
     <% end %>
   </div>
 </div>
