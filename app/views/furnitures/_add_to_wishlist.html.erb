@@ -5,25 +5,24 @@
         <h4 class="modal-title">Choisir une wishlist pour " <%= furniture.title %> "</h4>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body margin-top-1x">
         <div class="row">
-          <div class="col-sm-6 margin-bottom-2x">
+          <div class="col-sm-6 margin-bottom-1x">
             <nav class="list-group">
               <%= image_tag furniture.photo, class: "d-block mx-auto img-thumbnail mb-3" %>
             </nav>
           </div>
-          <div class="col-sm-6 margin-bottom-2x">
+          <div class="col-sm-6 margin-bottom-1x">
             <nav class="list-group">
               <% current_user.wishlists.each do |wishlist| %>
-                <a class="list-group-item" href="#"><%= wishlist.title %></a>
+                <div class="list-group-item justify-content-between">
+                  <%= wishlist.title %>
+                  <span><%= link_to 'ajouter', wishlist_wishlist_items_path(wishlist_id: wishlist.id, furniture_id: furniture.id), class: 'btn btn-sm btn-outline-primary', method: :post %></span>
+                </div>
               <% end %>
             </nav>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
-        <button class="btn btn-primary btn-sm" type="button">Save changes</button>
       </div>
     </div>
   </div>
