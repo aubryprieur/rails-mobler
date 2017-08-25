@@ -125,7 +125,7 @@ doc.search('#all_products_01').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price.to_i,
+        price: price.gsub(/\s+/, "").to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories[0])
         )
@@ -157,7 +157,7 @@ doc.search('#all_products_01').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price.to_i,
+        price: price.gsub(/\s+/, "").to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories[1])
         )
@@ -189,7 +189,7 @@ doc.search('#all_products_01').each do |element|
           height: height.to_i,
           width: width.to_i,
           length: lenght.to_i,
-          price: price.to_i,
+          price: price.gsub(/\s+/, "").to_i,
           url: v_link,
           category: Category.find_or_create_by(name: categories[2])
           )
@@ -233,7 +233,7 @@ doc.search('#all_products_04').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price.to_i,
+        price: price.gsub(/\s+/, "").to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories2[0])
         )
@@ -265,7 +265,7 @@ doc.search('#all_products_04').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price.to_i,
+        price: price.gsub(/\s+/, "").to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories2[1])
         )
@@ -297,7 +297,7 @@ doc.search('#all_products_04').each do |element|
           height: height.to_i,
           width: width.to_i,
           length: lenght.to_i,
-          price: price.to_i,
+          price: price.gsub(/\s+/, "").to_i,
           url: v_link,
           category: Category.find_or_create_by(name: categories2[2])
           )
@@ -340,7 +340,7 @@ doc.search('#all_products_03').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price.to_i,
+        price: price.gsub(/\s+/, "").to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories3[0])
         )
@@ -372,7 +372,7 @@ doc.search('#all_products_03').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price.to_i,
+        price: price.gsub(/\s+/, "").to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories3[1])
         )
@@ -404,7 +404,7 @@ doc.search('#all_products_03').each do |element|
           height: height.to_i,
           width: width.to_i,
           length: lenght.to_i,
-          price: price.to_i,
+          price: price.gsub(/\s+/, "").to_i,
           url: v_link,
           category: Category.find_or_create_by(name: categories3[2])
           )
@@ -445,7 +445,7 @@ doc.search('#all_products_02').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price.to_i,
+        price: price.gsub(/\s+/, "").to_i,
         url: v_link,
         category: Category.find_or_create_by(name: categories4[1])
         )
