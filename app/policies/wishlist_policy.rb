@@ -7,5 +7,9 @@ class WishlistPolicy < ApplicationPolicy
     def destroy?
       true
     end
+
+    def add_item?
+      true
+    end
 end
 

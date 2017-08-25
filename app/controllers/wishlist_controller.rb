@@ -13,19 +13,19 @@ class WishlistController < ApplicationController
     redirect_to profile_path
   end
 
-#A configurer en récupérant les infos de la modale popup dans l'index de furnitures
-
-  # def create
-  #    @wishlist = Wishlist.new
-  #    @wishlist.user = current_user
-  #    @wishlist.save
-  # end
-
   def add_item
-    @wishlist = Wishlist.find(params[:id])
-    @wishlist.user = current_user
+    @wishlist = Wishlist.find(params[:wishlist_id])
+    @item = FurnituresWishlist.new(furniture_id: params[:furniture_id], wishlist_id: params[:wishlist_id])
+    @item.wishlist = Wishlist.find(params[:wishlist_id])
+    authorize @wishlist
+      if @item.save
+        redirect_back(fallback_location: root_path)
+      else
+        render :new
+      end
   end
 
-
-
+  def review_params
+    params.require(:furniture_id).permit(:id)
+  end
 end
