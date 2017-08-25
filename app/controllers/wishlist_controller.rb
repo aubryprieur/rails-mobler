@@ -3,7 +3,6 @@ class WishlistController < ApplicationController
   def show
     @wishlist = Wishlist.find(params[:id])
     @furnitures = @wishlist.furnitures
-    @review = @wishlist.furnitures.review
     authorize @wishlist
   end
 
