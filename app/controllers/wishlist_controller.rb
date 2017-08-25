@@ -1,5 +1,5 @@
 class WishlistController < ApplicationController
-
+  before_action :authenticate_user!
   def show
     @wishlist = Wishlist.find(params[:id])
     @furnitures = @wishlist.furnitures

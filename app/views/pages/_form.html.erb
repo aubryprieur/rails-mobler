@@ -1,14 +1,43 @@
-
-  <div class="form-inputs" id="form">
-    <%= simple_form_for :search, method: :get, url: furnitures_path do |f| %>
-      <%= f.input :category, collection: @categories, class: 'form-control' %>
-      <%= f.input :min_length, class: "form-control", id: "min_length"%>
-      <%= f.input :max_length, class: "form-control", id: "max_length" %>
-      <%= f.input :min_width, class: "form-control", id: "min_width" %>
-      <%= f.input :max_width, class: "form-control", id: "max_width" %>
-      <%= f.input :min_height, class: "form-control", id: "min_height" %>
-      <%= f.input :max_height, class: "form-control", id: "max_height" %>
-      <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1' %>
-    <% end %>
+  <div class="row align-items-center">
+    <div class="col-xs-12 col-sm-12">
+      <div class="form-inputs" id="form">
+        <%= simple_form_for :search, method: :get, url: furnitures_path do |f| %>
+          <div class="row">
+            <div class="col-xs-2 col-sm-2">
+              <%= f.input :min_length, class: "form-control ", id: "min_length", placeholder: 'min length (cm)'%>
+            </div>
+            <div class="col-xs-2 col-sm-2">
+              <%= f.input :max_length, class: "form-control", id: "max_length", placeholder: 'max length (cm)' %>
+            </div>
+            <div class="col-xs-2 col-sm-2">
+              <%= f.input :min_width, class: "form-control", id: "min_width", placeholder: 'min width (cm)' %>
+            </div>
+            <div class="col-xs-2 col-sm-2">
+              <%= f.input :max_width, class: "form-control", id: "max_width", placeholder: 'max width (cm)' %>
+            </div>
+            <div class="col-xs-2 col-sm-2">
+              <%= f.input :min_height, class: "form-control", id: "min_height", placeholder: 'min height (cm)' %>
+            </div>
+            <div class="col-xs-2 col-sm-2">
+              <%= f.input :max_height, class: "form-control", id: "max_height", placeholder: 'max height (cm)' %>
+            </div>
+          </div>
+          <br>
+          <div class="col-xs-12">
+            <%= f.input :category, collection: @categories, class: 'form-control', placeholder: 'max height (cm)' %>
+          </div>
+          <br>
+          <br>
+          <br>
+          <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1' %>
+        <% end %>
+      </div>
+    </div>
   </div>
+</div>
+
+
+
+
+
 
