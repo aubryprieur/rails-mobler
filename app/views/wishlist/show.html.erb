@@ -30,15 +30,16 @@
               <li> <strong>Price :</strong> <%= furniture.price %> €</li>
             </ul>
           </p>
-           <%= link_to "Delete", furniture_path(furniture), :method => 'delete', class: "btn btn-primary btn-sm" %>
-           <%= link_to "Review+", furniture_path(furniture), :method => 'delete', class: "btn btn-primary btn-sm" %>
-
-
+           <%= link_to "Delete furniture", furniture_path(furniture), :method => 'delete', class: "btn btn-primary btn-sm" %>
+          <div>
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaldefault" title="Whishlist">Add comment</button>
+            <% content_for :modals do %>
+              <%= render 'comment' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-
-
     <div class="col-sm-3 margin-bottom-2x pb-2">
       <% furniture.reviews.each do |review| %>
       <ul>
@@ -49,4 +50,3 @@
     <% end %>
   </div>
 </div>
-

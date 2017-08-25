@@ -1,5 +1,6 @@
-<div class="modal fade" id="modalDefault" tabindex="-1" role="dialog">
+<div class="modal fade" id="modaldefault" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
+  <form>
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Insert comment to your furniture</h4>
@@ -7,11 +8,14 @@
       </div>
       <div class="modal-body">
         <p> Please type your comment ...</p>
+        <textarea name="comment" id="comment" rows="4" cols="68"></textarea>
       </div>
       <div class="modal-footer">
         <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
-        <button class="btn btn-primary btn-sm" type="button">Save comment</button>
+        <button class="btn btn-primary btn-sm" type="submit">Save comment</button>
       </div>
     </div>
+    </form>
   </div>
 </div>
+
