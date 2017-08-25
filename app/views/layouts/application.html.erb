@@ -31,10 +31,11 @@
 
     <%= render 'shared/navbar' %>
     <div class="offcanvas-wrapper">
-    <%= yield %>
+      <%= yield %>
     </div>
     <%= render 'shared/footer' %>
 
+    <%= yield(:modals) %>
 
     <%= javascript_include_tag 'application' %>
 

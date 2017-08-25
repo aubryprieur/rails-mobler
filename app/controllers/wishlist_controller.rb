@@ -14,9 +14,18 @@ class WishlistController < ApplicationController
   end
 
 #A configurer en récupérant les infos de la modale popup dans l'index de furnitures
+
   # def create
-  #   @wishlist = Wishlist.new
-  #   @wishlist.user = current_user
-  #   @wishlist.save
+  #    @wishlist = Wishlist.new
+  #    @wishlist.user = current_user
+  #    @wishlist.save
   # end
+
+  def add_item
+    @wishlist = Wishlist.find(params[:id])
+    @wishlist.user = current_user
+  end
+
+
+
 end
