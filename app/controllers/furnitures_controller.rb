@@ -28,7 +28,10 @@ class FurnituresController < ApplicationController
   def destroy
     @furniture = Furniture.find(params[:id])
     authorize @furniture
-    @furniture.destroy
-    redirect_to profile_path
+    if @furniture.destroy
+      redirect_back(fallback_location: root_path)
+    else
+      render :new
+    end
   end
 end
