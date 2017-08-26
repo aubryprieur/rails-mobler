@@ -14,4 +14,8 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :furnitures, only: [ :index, :show, :destroy ]
+
+  if Rails.env.production?
+    get '404', to: 'application#page_not_found'
+  end
 end
