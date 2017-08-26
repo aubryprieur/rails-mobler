@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  after_action :return_errors, only: [:page_not_found, :server_error]
 
   include Pundit
 
@@ -15,9 +16,11 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+
   private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
 end

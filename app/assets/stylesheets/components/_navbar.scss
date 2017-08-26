@@ -1,6 +1,7 @@
 .navbar {
   height: 70px;
   margin-bottom: 0px;
+
 }
 
 .site-logo {
@@ -35,5 +36,9 @@
     transition: color .3s;
     color: #10A7EF;
     text-decoration: none;
+}
+
+.avatar {
+    border-radius: 50%
 }
 
