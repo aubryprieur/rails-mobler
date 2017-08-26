@@ -6,7 +6,10 @@
 
               </div>
               <div class="user-info">
-                <div class="user-avatar"><a class="edit-avatar" href="#"></a><img src=" <%= @avatar %>" alt="User"></div>
+                <div class="user-avatar"><a class="edit-avatar" href="#"></a>
+                  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/50x50" %>
+                  <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                </div>
                 <div class="user-data" >
                   <h4> <%= @FirstName %> </h4> <h4> <%= @LastName %> </h4> <span> <%= @email %> </span>
                 </div>
