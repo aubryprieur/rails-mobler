@@ -32,8 +32,5 @@ module RailsMobler
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    #404
-    config.exceptions_app = self.routes
   end
 end

@@ -15,7 +15,4 @@ Rails.application.routes.draw do
 
   resources :furnitures, only: [ :index, :show, :destroy ]
 
-  if Rails.env.production?
-    get '404', to: 'application#page_not_found'
-  end
 end

@@ -157,7 +157,7 @@ doc.search('#all_products_01').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price.gsub(/\s+/, "").to_i,
+        price: price.gsub("/\s+/", "").gsub(",", ".").to_f,
         url: v_link,
         category: Category.find_or_create_by(name: categories[1])
         )
