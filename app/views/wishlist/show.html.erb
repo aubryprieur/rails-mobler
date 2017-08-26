@@ -16,36 +16,33 @@
   <div class="wishlist-description"><h4> <%= @wishlist.description %></h4></div>
   <div class="row">
     <% @furnitures.each do |furniture| %>
-
-
     <div class="col-sm-3 margin-bottom-2x pb-2">
       <div class="card"><img class="card-img-top" src="<%= furniture.photo %>" alt="Card image">
         <div class="card-block">
           <h4 class="card-title"> <%= furniture.title %></h4>
           <p class="card-text">
-            <ul>
-              <li> <strong>Length :</strong><%= furniture.length %> cm </li>
-              <li> <strong>Height :</strong> <%= furniture.height %> cm</li>
-              <li> <strong>Width :</strong> <%= furniture.width %> cm</li>
-              <li> <strong>Price :</strong> <%= furniture.price %> €</li>
-            </ul>
+            <strong>L:</strong><%= furniture.length %> cm <strong>H:</strong> <%= furniture.height %> cm <strong>W:</strong> <%= furniture.width %> cm
           </p>
-           <%= link_to "Delete furniture", furniture_path(furniture), :method => 'delete', class: "btn btn-primary btn-sm" %>
-          <div>
-            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaldefault" title="Whishlist">Add comment</button>
-            <% content_for :modals do %>
+          <div class="row">
+            <%= link_to "Delete", furniture_path(furniture), :method => 'delete', class: "btn btn-secondary btn-sm" %>
+            <div>
+              <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modaldefault" title="Whishlist">Comment</button>
+              <% content_for :modals do %>
               <%= render 'comment' %>
-            <% end %>
+              <% end %>
+            </div>
+            <div>
+              <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalLarge" title="Whishlist">Reviews</button>
+              <% content_for :modals do %>
+              <%= render 'reviews' %>
+              <% end %>
+            </div>
+          </div>
+          <div class="text-center">
+            <%= link_to "Buy", furniture.url, target: "_blank", class: "btn btn-outline-primary btn-sm" %>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-3 margin-bottom-2x pb-2">
-      <% furniture.reviews.each do |review| %>
-      <ul>
-        <li><%=  review.content %></li>
-      </ul>
-      <% end %>
     </div>
     <% end %>
   </div>
