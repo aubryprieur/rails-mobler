@@ -1,5 +1,6 @@
 <div class="container padding-bottom-2x">
   <div class="row">
+    <%= paginate @furnitures %>
     <% @furnitures.each do |furniture| %>
       <%= render 'card', furniture: furniture %>
     <% end %>
