@@ -1,10 +1,11 @@
 <div class="container padding-bottom-2x">
+  <div class="col-xs-12">
+    Mobler found for you: <%= @furnitures.total_count %> furnitures
+  </div>
+      <%= paginate @furnitures %>
   <div class="row">
-    <%= paginate @furnitures %>
-    <% @furnitures.each do |furniture| %>
+      <% @furnitures.each do |furniture| %>
       <%= render 'card', furniture: furniture %>
-    <% end %>
+      <% end %>
   </div>
 </div>
-
-
