@@ -6,6 +6,7 @@ Wishlist.destroy_all
 Category.destroy_all
 User.destroy_all
 
+
 puts 'Creating users...'
 user1 = User.create!(
   first_name:"Guillaume",
@@ -531,3 +532,7 @@ puts 'Finished! ---) REVIEW OK! '
 puts '#################################################################################'
 puts '################################# EXCELLENT TRAVAIL #############################'
 puts '#################################################################################'
+
+
+
+
