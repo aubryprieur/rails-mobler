@@ -1,4 +1,4 @@
-<div class="modal fade" id="modaldefault" tabindex="-1" role="dialog">
+<div class="modal fade" id="modaldefault<%=furniture.id%>" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,8 +6,10 @@
         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <%= form_for [furniture, Review.new] do |f| %>
-        <%= f.text_area :content %>
+        <%= simple_form_for Review.new do |f| %>
+        <%= f.input :content %>
+        <%= f.hidden_field :furnitures_wishlist_id, value: f_w_id %>
+
         <%= f.submit "add a review", class: "btn btn-primary btn-sm" %>
         <% end %>
       </div>
