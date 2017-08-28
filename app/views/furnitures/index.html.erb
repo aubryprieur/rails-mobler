@@ -1,3 +1,42 @@
+<div class="page-title">
+  <div class="container">
+    <div class="form-inputs" id="form">
+      <%= simple_form_for :search, method: :get, url: furnitures_path do |f| %>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <%= f.input :min_length, label: '', required: false, class: "form-control ", id: "min_length", placeholder: 'min length (cm)'%>
+            </div>
+            <div class="form-group">
+              <%= f.input :max_length, required: false, class: "form-control", id: "max_length", placeholder: 'max length (cm)' %>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <%= f.input :min_width, required: false, class: "form-control", id: "min_width", placeholder: 'min width (cm)' %>
+            </div>
+            <div class="form-group">
+              <%= f.input :max_width, required: false, class: "form-control", id: "max_width", placeholder: 'max width (cm)' %>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <%= f.input :min_height, required: false, class: "form-control", id: "min_height", placeholder: 'min height (cm)' %>
+            </div>
+            <div class="form-group">
+              <%= f.input :max_height, required: false, class: "form-control", id: "max_height", placeholder: 'max height (cm)' %>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <%= f.input :category, required: false, collection: @categories, class: 'form-control', placeholder: 'toto' %>
+            <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1 btn-block margin-top-2x' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="container padding-bottom-2x">
   <div class="col-xs-12">
     Mobler found for you: <%= @furnitures.total_count %> furnitures
