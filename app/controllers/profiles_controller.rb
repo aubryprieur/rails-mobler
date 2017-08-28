@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   def profile
+    @wishlist = Wishlist.new
     @wishlists = current_user.wishlists
     @FirstName = current_user.first_name
     @LastName = current_user.last_name
