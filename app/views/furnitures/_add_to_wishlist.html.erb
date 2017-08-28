@@ -17,10 +17,20 @@
               <% current_user.wishlists.each do |wishlist| %>
                 <div class="list-group-item justify-content-between">
                   <%= wishlist.title %>
-                  <span><%= link_to 'ajouter', wishlists_add_item_path(wishlist_id: wishlist.id, furniture_id: furniture.id), class: 'btn btn-sm btn-outline-primary', method: :post %></span>
+                  <span><%= link_to 'ajouter', wishlists_add_item_path(wishlist_id: wishlist.id, furniture_id: furniture.id), class: 'btn btn-sm btn-outline-danger', method: :post %></span>
                 </div>
               <% end %>
             </nav>
+            <div class="modal-body margin-top-1x">
+              <%= simple_form_for (@wishlist) do |f| %>
+                  <%= f.input :title, class: 'form-control', placeholder: 'Ex: bedroom, table for living-room' %>
+                  <%= f.input :description, class: 'form-control', placeholder: 'Ex: A beautifull table for living-room' %>
+                  <br>
+                <div class="form-inputs">
+                  <%= f.button :submit, "Create", class: 'btn btn-primary btn-block' %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

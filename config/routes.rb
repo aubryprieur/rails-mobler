@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   post 'wishlists/add_item'
 
+  post 'wishlists/add_and_create'
 
   resources :wishlists, only: [:show, :create, :destroy]
 
