@@ -1,5 +1,5 @@
 meta_product_name: "Mobler"
 meta_title: "Mobler - Easy way to find furniture by size"
 meta_description: "Not easy to find a piece of furniture of adequate dimensions. Mobler quickly finds you the perfect piece of furniture."
-meta_image: "../images/banner_2.jpeg"                       # should exist in `app/assets/images/`
+meta_image: "../assets/images/banner_2.jpeg"                       # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
