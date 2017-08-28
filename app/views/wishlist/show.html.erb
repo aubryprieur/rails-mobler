@@ -28,13 +28,13 @@
             <div>
               <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modaldefault" title="Whishlist">Comment</button>
               <% content_for :modals do %>
-              <%= render 'comment' %>
+              <%= render 'comment', furniture: furniture, review: Review.new %>
               <% end %>
             </div>
             <div>
               <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalLarge" title="Whishlist">Reviews</button>
               <% content_for :modals do %>
-              <%= render 'reviews' %>
+              <%= render 'reviews', furniture: furniture %>
               <% end %>
             </div>
           </div>
