@@ -3,16 +3,21 @@
     <div class="item">
       <div class="container padding-top-3x">
         <div class="row align-items-center">
-          <div class="col-xs-12 col-md-12 text-center">
+          <div class="col-xs-12 col-sm-12 text-center">
+            <br>
+            <br>
+            <br>
+            <br>
             <div class="from-bottom">
               <%= image_tag "logo_blue.png", class: "d-inline-block w-200 mb-4" %>
               <div class="h2 text-body text-normal mb-2 pt-1">Easy way to find furniture by size</div>
             </div>
             <br>
             <br>
-            <br>
-            <br>
-              <%= render 'form' %>
+            <button class="btn btn-primary " data-toggle="modal" data-target="#modal" title="search">Select the perfect size<i class="icon-arrow-right"></i></button>
+            <% content_for :modals do %>
+              <%= render 'modal_form' %>
+            <% end %>
           </div>
         </div>
       </div>
