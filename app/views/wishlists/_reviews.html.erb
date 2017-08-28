@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalLarge" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalLarge<%=furniture.id%>" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,9 +7,10 @@
       </div>
       <div class="modal-body">
 
-        <% furniture.reviews.each do |review| %>
+
+        <% reviews.each do |review| %>
         <ul>
-          <li><%=  review.content %></li>
+          <li><%= review.content %></li>
         </ul>
         <% end %>
 

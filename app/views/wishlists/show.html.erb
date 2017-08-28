@@ -26,15 +26,17 @@
           <div class="row">
             <%= link_to "Delete", furniture_path(furniture), :method => 'delete', class: "btn btn-secondary btn-sm" %>
             <div>
-              <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modaldefault" title="Whishlist">Comment</button>
+              <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modaldefault<%=furniture.id%>" title="Whishlist">Comment</button>
+              <% f_w = FurnituresWishlist.where(wishlist: @wishlist).where(furniture: furniture).first.id %>
               <% content_for :modals do %>
-              <%= render 'comment', furniture: furniture, review: Review.new %>
+              <%= render 'comment', f_w_id: f_w, review: Review.new , furniture: furniture%>
               <% end %>
             </div>
+
             <div>
-              <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalLarge" title="Whishlist">Reviews</button>
+              <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalLarge<%=furniture.id%>" title="Whishlist">Reviews</button>
               <% content_for :modals do %>
-              <%= render 'reviews', furniture: furniture %>
+              <%= render 'reviews', reviews: furniture.furnitures_wishlists.where(wishlist: @wishlist).first.reviews, furniture: furniture %>
               <% end %>
             </div>
           </div>
