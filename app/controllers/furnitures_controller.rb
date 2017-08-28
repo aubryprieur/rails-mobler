@@ -2,6 +2,7 @@ class FurnituresController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show]
 
   def index
+    @categories = Category.all
     if params[:search][:category].present?
       @furnitures = policy_scope(Furniture).where(category: params[:search][:category],
                                                   width: (params[:search][:min_width].present? ? params[:search][:min_width].to_i : 0)..(params[:search][:max_width].present? ? params[:search][:max_width].to_i : 400),
