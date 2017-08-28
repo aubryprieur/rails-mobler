@@ -1,57 +1,52 @@
+<div class="page-title">
+  <div class="container">
+    <div class="text-right">
+      <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal
+      " title="Whishlist">New wishlist</button>
+      <% content_for :modals do %>
+        <%= render 'new_wishlist' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="container padding-bottom-3x mb-2">
   <div class="row">
     <div class="col-lg-4">
-            <aside class="user-info-wrapper">
-              <div class="user-cover" style="background-image: url(theme/img/account/user-cover-img.jpg);">
-
-              </div>
-              <div class="user-info">
-                <div class="user-avatar"><a class="edit-avatar" href="#"></a>
-                  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/50x50" %>
-                  <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-                </div>
-                <div class="user-data" >
-                  <h4> <%= @FirstName %> </h4> <h4> <%= @LastName %> </h4> <span> <%= @email %> </span>
-                </div>
-              </div>
-            </aside>
-            <nav class="list-group"></nav>
+      <aside class="user-info-wrapper">
+        <div class="user-cover" style="background-image: url(theme/img/account/user-cover-img.jpg);"></div>
+        <div class="user-info">
+          <div class="user-avatar"><a class="edit-avatar" href="#"></a>
+            <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/50x50" %>
+            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           </div>
-    <div class="col-lg-8">
-      <div class="padding-top-2x mt-2 hidden-lg-up"></div>
-      <div class="table-responsive wishlist-table margin-bottom-none">
-        <table class="table">
-          <thead>
-            <tr>
-              <th> Vos wishlists</th>
-              <th class="text-center">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="row">
-                  <% @wishlists.each do |wishlist| %>
-                  <div class="col-lg-4 margin-bottom-1x">
-                    <div class="card text-center">
-                      <div class="card-block">
-                        <h4 class="card-title"> <%= wishlist.title %> </h4>
-                        <p class="card-text"> <%= wishlist.description %> </p>
-                        <%= link_to "Voir cette liste", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
-                        <%= link_to "Delete", wishlist_path(wishlist), :method => 'delete' %>
-                      </div>
-                    </div>
-                  </div>
-                  <% end %>
-                </div>
-              </td>
-            </tr>
-          <tr></tr>
-        <tr></tr>
-      </tbody>
-    </table>
+          <div class="user-data" >
+            <h4><%= @FirstName %></h4><h4><%= @LastName %></h4><span><%= @email %></span>
+          </div>
+        </div>
+      </aside>
+      <nav class="list-group"></nav>
+    </div>
+
+    <div class="col-xs12 col-sm-8">
+      <div class="row">
+        <% @wishlists.each do |wishlist| %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ls.html">
+                <div class="inner">
+                  <div class="main-img"><%= image_tag avatar_url %></div>
+                  <div class="thumblist"><%= image_tag avatar_url %><%= image_tag avatar_url %></div>
+                </div></a>
+              <div class="card-block text-center">
+                <h4 class="card-title"><%= wishlist.title %></h4>
+                <p class="text-muted"></p>
+                <%= link_to "Delete", wishlist_path(wishlist), :method => 'delete', class: 'btn btn-link-danger' %>
+                <%= link_to "View product", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </div>

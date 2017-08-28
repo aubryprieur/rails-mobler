@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   get '/profile' => 'profiles#profile'
 
+  post 'wishlists/add_item'
 
 
-  resources :wishlist, only: [:show, :destroy]
+  resources :wishlists, only: [:show, :create, :destroy]
 
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
