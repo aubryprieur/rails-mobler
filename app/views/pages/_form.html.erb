@@ -22,19 +22,15 @@
               <%= f.input :max_height, class: "form-control", id: "max_height", placeholder: 'max height (cm)' %>
             </div>
           </div>
-          <br>
           <div class="col-xs-12">
-            <%= f.input :category, collection: @categories, class: 'form-control', placeholder: 'max height (cm)' %>
+            <%= f.input :category, collection: @categories, class: 'form-control' %>
           </div>
-          <br>
-          <br>
-          <br>
           <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1' %>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+
 
 
 
