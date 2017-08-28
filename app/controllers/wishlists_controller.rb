@@ -1,4 +1,4 @@
-class WishlistController < ApplicationController
+class WishlistsController < ApplicationController
   before_action :authenticate_user!
   def show
     @wishlist = Wishlist.find(params[:id])
@@ -9,6 +9,14 @@ class WishlistController < ApplicationController
   def destroy
     @wishlist = Wishlist.find(params[:id])
     @wishlist.destroy
+    authorize @wishlist
+    redirect_to profile_path
+  end
+
+  def create
+    @wishlist = Wishlist.new(wishlist_params)
+    @wishlist.user = current_user
+    @wishlist.save
     authorize @wishlist
     redirect_to profile_path
   end
@@ -25,7 +33,7 @@ class WishlistController < ApplicationController
       end
   end
 
-  def review_params
-    params.require(:furniture_id).permit(:id)
+  def wishlist_params
+    params.require(:wishlist).permit(:title, :description)
   end
 end
