@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/profile' => 'profiles#profile'
 
-  post 'wishlist/add_item'
+  post 'wishlists/add_item'
 
   resources :wishlists, only: [:show, :create, :destroy]
 
