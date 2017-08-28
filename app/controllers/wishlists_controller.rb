@@ -18,7 +18,7 @@ class WishlistsController < ApplicationController
     @wishlist.user = current_user
     @wishlist.save
     authorize @wishlist
-    redirect_to profile_path
+    redirect_back(fallback_location: root_path)
   end
 
   def add_item
@@ -31,6 +31,10 @@ class WishlistsController < ApplicationController
       else
         render :new
       end
+  end
+
+  def add_and_create
+
   end
 
   def wishlist_params
