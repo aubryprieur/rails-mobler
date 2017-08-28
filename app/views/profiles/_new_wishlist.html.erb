@@ -7,10 +7,11 @@
       </div>
       <div class="modal-body margin-top-1x">
         <%= simple_form_for (@wishlist) do |f| %>
-            <%= f.input :title, class: 'form-control' %>
-            <%= f.input :description, class: 'form-control' %>
+            <%= f.input :title, class: 'form-control', placeholder: 'Ex: bedroom, table for living-room' %>
+            <%= f.input :description, class: 'form-control', placeholder: 'Ex: A beautifull table for living-room' %>
+            <br>
           <div class="form-inputs">
-            <%= f.button :submit, "Save", class: 'btn btn-outline-primary' %>
+            <%= f.button :submit, "Create", class: 'btn btn-primary btn-block' %>
           </div>
         <% end %>
       </div>
