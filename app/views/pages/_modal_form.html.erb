@@ -9,7 +9,7 @@
         <div class="row align-items-center">
           <div class="col-xs-12 col-sm-12">
             <div class="form-inputs" id="form">
-              <%= simple_form_for :search, method: :get, url: furnitures_path do |f| %>
+              <%= simple_form_for Search.new, method: :get, url: furnitures_path do |f| %>
                 <div class="col-xs-12">
                   <%= f.input :category, collection: @categories, class: 'form-control', placeholder: 'toto' %>
                 </div>
@@ -17,24 +17,11 @@
                 <h6 class="text-muted text-normal text-uppercase text-center margin-top-1x">Size</h6>
                 <hr class="margin-bottom-1x">
                 <div class="row">
-                  <div class="col-xs-6 col-md-6">
-                    <%= f.input :min_length, class: "form-control ", id: "min_length", placeholder: 'min length (cm)'%>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= f.input :max_length, class: "form-control", id: "max_length", placeholder: 'max length (cm)' %>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= f.input :min_width, class: "form-control", id: "min_width", placeholder: 'min width (cm)' %>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= f.input :max_width, class: "form-control", id: "max_width", placeholder: 'max width (cm)' %>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= f.input :min_height, class: "form-control", id: "min_height", placeholder: 'min height (cm)' %>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= f.input :max_height, class: "form-control", id: "max_height", placeholder: 'max height (cm)' %>
-                  </div>
+
+                  <%= f.input :length, as: :slider, min: 0, max: 400, range: true %>
+                  <%= f.input :width, as: :slider, min: 0, max: 400, range: true %>
+                  <%= f.input :height, as: :slider, min: 0, max: 400, range: true %>
+
                 </div>
                 <br><br>
                 <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1 btn-block' %>

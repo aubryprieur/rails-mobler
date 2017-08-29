@@ -37,6 +37,7 @@
     <link rel="stylesheet" media="screen" href="/theme/css/vendor.min.css">
     <!-- Main Template Styles-->
     <link id="mainStyles" rel="stylesheet" media="screen" href="/theme/css/styles.min.css">
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.css' %>
     <!-- Modernizr-->
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
@@ -55,9 +56,12 @@
 
     <%= yield(:modals) %>
 
-    <%= javascript_include_tag 'application' %>
 
     <script src="/theme/js/vendor.min.js"></script>
     <script src="/theme/js/scripts.min.js"></script>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.js' %>
+    <%= javascript_include_tag 'application' %>
+    <%= yield(:js) %>
+
   </body>
 </html>

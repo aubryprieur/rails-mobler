@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.4'
 
-
+gem 'simple_form_extension'
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'figaro'
@@ -11,6 +11,8 @@ gem 'puma'
 gem 'rails', '5.1.3'
 gem 'redis'
 gem "pundit"
+
+gem 'coffee-rails'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 4.0.0.beta'
@@ -32,3 +34,5 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
 end
+
+gem 'redactor-rails', github: 'glyph-fr/redactor-rails'
