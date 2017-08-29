@@ -1,22 +1,36 @@
 <div class="page-title">
   <div class="container">
-    <div class="column">
-      <h1><%= @wishlist.title %></h1>
+    <div class="row">
+      <div class="col-md-8 text-left">
+        <%= link_to profile_path, class: 'btn btn-sm btn-outline-primary' do %>
+          <i class="icon-arrow-left"></i> <%= "All wishlists" %>
+        <% end %>
+        <%= link_to furnitures_path, class: 'btn btn-sm btn-outline-secondary' do %>
+          <i class="icon-search"></i> <%= "new search" %>
+        <% end %>
+      </div>
+      <div class="col-md-4 text-right">
+        <%= link_to "Delete this wishlist!", wishlist_path(@wishlist), :method => 'delete', class: "btn btn-link-secondary" %>
+        <%= link_to "Edit", wishlist_path(@wishlist), class: "btn btn-sm btn-secondary" %>
+      </div>
     </div>
-    <div class="column">
-      <ul class="breadcrumbs">
-        <li>
-          <%= link_to "Supprimer la wishlist", wishlist_path(@wishlist), :method => 'delete' %>
-        </li>
-      </ul>
+    <hr class="margin-bottom-2x margin-top-1x">
+    <div class="row">
+      <div class="col-md-5 text-left">
+        <h1><strong><%= @wishlist.title %></strong></h1>
+        <br>
+        <p> You have <strong><%= @wishlist.furnitures.count %> furnitures</strong> in this wishlist</p>
+      </div>
+      <div class="col-md-7 text-right">
+        <p class=""><strong> Description: </strong><%= @wishlist.description %></p>
+      </div>
     </div>
   </div>
 </div>
 <div class="container">
-  <div class="wishlist-description"><h4> <%= @wishlist.description %></h4></div>
   <div class="row">
     <% @furnitures.each do |furniture| %>
-    <div class="col-sm-3 margin-bottom-2x pb-2">
+    <div class="col-md-4 margin-bottom-1x pb-2">
       <div class="card"><img class="card-img-top" src="<%= furniture.photo %>" alt="Card image">
         <div class="card-block">
           <h4 class="card-title"> <%= furniture.title %></h4>
