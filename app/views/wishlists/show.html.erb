@@ -13,6 +13,28 @@
   </div>
 </div>
 <div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-inline">
+        <h4>Share the wishlist: </h4>
+        <%= form_for [@wishlist, GuestWishlist.new], :html => {class: 'form-inline'} do |f| %>
+        <div class="input-group">
+          <div class="input-group-addon">@</div>
+          <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email" %>
+        </div>
+        <div>
+          <%= f.submit "Invite", class: "btn btn-outline-primary btn-sm" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <h4>Users :</h4>
+      <% @wishlist.guest_wishlists.each do |guest| %>
+      <div><%= guest.email %></div>
+      <% end %>
+    </div>
+  </div>
   <div class="wishlist-description"><h4> <%= @wishlist.description %></h4></div>
   <div class="row">
     <% @furnitures.each do |furniture| %>
@@ -32,7 +54,6 @@
               <%= render 'comment', f_w_id: f_w, review: Review.new , furniture: furniture%>
               <% end %>
             </div>
-
             <div>
               <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalLarge<%=furniture.id%>" title="Whishlist">Reviews</button>
               <% content_for :modals do %>
