@@ -35,6 +35,20 @@
                   <div class="col-xs-6 col-md-6">
                     <%= f.input :max_height, class: "form-control", id: "max_height", placeholder: 'max height (cm)' %>
                   </div>
+                  <div class="row">
+                  <div class="col-xs-12 col-md-12">
+                  <p>Lenght</p>
+                  <b> 0 cm </b> <input id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="400" data-slider-step="5" data-slider-value="[50,250]"/> <b>    400 cm</b>
+                  </div>
+                  <div class="col-xs-12 col-md-12">
+                  <p>Width</p>
+                  <b> 0 cm </b> <input id="ex3" type="text" class="span2" value="" data-slider-min="0" data-slider-max="400" data-slider-step="5" data-slider-value="[100,300]"/> <b>    400 cm</b>
+                  </div>
+                  <div class="col-xs-12 col-md-12">
+                  <p>Heigth</p>
+                  <b> 0 cm </b> <input id="ex4" type="text" class="span2" value="" data-slider-min="0" data-slider-max="400" data-slider-step="5" data-slider-value="[50,250]"/> <b>    400 cm</b>
+                  </div>
+                  </div>
                 </div>
                 <br><br>
                 <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1 btn-block' %>
