@@ -1,7 +1,7 @@
 <div class="page-title">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 text-left">
+      <div class="col-md-6 text-left">
         <%= link_to profile_path, class: 'btn btn-sm btn-outline-primary' do %>
           <i class="icon-arrow-left"></i> <%= "All wishlists" %>
         <% end %>
@@ -9,9 +9,14 @@
           <i class="icon-search"></i> <%= "new search" %>
         <% end %>
       </div>
-      <div class="col-md-4 text-right">
+      <div class="col-md-6 text-right">
         <%= link_to "Delete this wishlist!", wishlist_path(@wishlist), :method => 'delete', class: "btn btn-link-secondary" %>
         <%= link_to "Edit", wishlist_path(@wishlist), class: "btn btn-sm btn-secondary" %>
+        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal<%= @wishlist.id %>%>
+        " title="Whishlist"> Add collaborators</button>
+        <% content_for :modals do %>
+          <%= render 'add_collaborators', wishlist: @wishlist %>
+        <% end %>
       </div>
     </div>
     <hr class="margin-bottom-2x margin-top-1x">
@@ -25,62 +30,83 @@
         <p class=""><strong> Description: </strong><%= @wishlist.description %></p>
       </div>
     </div>
-     <div class="row">
-        <div class="col-xs-6">
-          <div class="form-inline">
-            <h4>Share the wishlist: </h4>
-            <%= form_for [@wishlist, GuestWishlist.new], :html => {class: 'form-inline'} do |f| %>
-            <div class="input-group">
-              <div class="input-group-addon">@</div>
-              <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email" %>
-            </div>
-            <div>
-              <%= f.submit "Invite", class: "btn btn-outline-primary btn-sm" %>
-            </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <h4>Users :</h4>
-          <% @wishlist.guest_wishlists.each do |guest| %>
-          <div><%= guest.email %></div>
-          <% end %>
-        </div>
-      </div>
   </div>
 </div>
 <div class="container">
+  <div class="row justify-content-between">
+    <div class="col-md-8">
+      <div class="form-inline">
+        <%= form_for [@wishlist, GuestWishlist.new], :html => {class: 'form-inline'} do |f| %>
+        <div class="input-group">
+          <div class="input-group-addon">@</div>
+          <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email" %>
+        </div>
+        <div>
+          <%= f.submit "Invite", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    <div class="col-4">
+      <h4></h4>
+      <% @wishlist.guest_wishlists.each do |guest| %>
+        <%= guest.email %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+  <hr class="margin-bottom-1x margin-top-1x">
   <div class="row">
+
     <% @furnitures.each do |furniture| %>
-    <div class="col-md-4 margin-bottom-1x pb-2">
-      <div class="card"><img class="card-img-top" src="<%= furniture.photo %>" alt="Card image">
-        <div class="card-block">
-          <h4 class="card-title"> <%= furniture.title %></h4>
-          <p class="card-text">
-            <strong>L:</strong><%= furniture.length %> cm <strong>H:</strong> <%= furniture.height %> cm <strong>W:</strong> <%= furniture.width %> cm
-          </p>
-          <div class="row">
-            <%= link_to "Delete", furniture_path(furniture), :method => 'delete', class: "btn btn-secondary btn-sm" %>
-            <div>
-              <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modaldefault<%=furniture.id%>" title="Whishlist">Comment</button>
-              <% f_w = FurnituresWishlist.where(wishlist: @wishlist).where(furniture: furniture).first.id %>
-              <% content_for :modals do %>
-              <%= render 'comment', f_w_id: f_w, review: Review.new , furniture: furniture%>
-              <% end %>
+      <div class="col-md-4 margin-bottom-1x pb-2">
+        <div class="card"><img class="card-img-top" src="<%= furniture.photo %>" alt="Card image">
+          <div class="card-block">
+            <h4 class="card-title"> <%= furniture.title %></h4>
+            <p class="card-text">
+              <strong>L:</strong><%= furniture.length %> cm <strong>H:</strong> <%= furniture.height %> cm <strong>W:</strong> <%= furniture.width %> cm
+            </p>
+            <div class="row">
+              <%= link_to "Delete", furniture_path(furniture), :method => 'delete', class: "btn btn-secondary btn-sm" %>
+              <div>
+                <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modaldefault<%=furniture.id%>" title="Whishlist">Comment</button>
+                <% f_w = FurnituresWishlist.where(wishlist: @wishlist).where(furniture: furniture).first.id %>
+                <% content_for :modals do %>
+                <%= render 'comment', f_w_id: f_w, review: Review.new , furniture: furniture%>
+                <% end %>
+              </div>
+              <div>
+                <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalLarge<%=furniture.id%>" title="Whishlist">Reviews</button>
+                <% content_for :modals do %>
+                <%= render 'reviews', reviews: furniture.furnitures_wishlists.where(wishlist: @wishlist).first.reviews, furniture: furniture %>
+                <% end %>
+              </div>
             </div>
-            <div>
-              <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalLarge<%=furniture.id%>" title="Whishlist">Reviews</button>
-              <% content_for :modals do %>
-              <%= render 'reviews', reviews: furniture.furnitures_wishlists.where(wishlist: @wishlist).first.reviews, furniture: furniture %>
-              <% end %>
+            <div class="text-center">
+              <%= link_to "Buy", furniture.url, target: "_blank", class: "btn btn-outline-primary btn-sm" %>
             </div>
-          </div>
-          <div class="text-center">
-            <%= link_to "Buy", furniture.url, target: "_blank", class: "btn btn-outline-primary btn-sm" %>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container margin-bottom-2x">
+<hr class="margin-bottom-2x margin-top-1x">
+  <div class="row">
+    <% @furnitures.each do |furniture| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="product-card text-center">
+          <%= image_tag furniture.photo, class: "product-thumb" %>
+          <h2 class="product-title"><%= furniture.title %> - <strong><%= furniture.price.to_s.gsub(".0", "").gsub(".", ",") %> € </strong></h2>
+          <p class="tag text-center">L: <strong><%= furniture.length %></strong>cm - W: <strong><%= furniture.width %></strong>cm - H: <strong><%= furniture.height %>cm</strong></p>
+          <div class="product-buttons">
+            <%= link_to "Buy", furniture.url, target: "_blank", class: "btn btn-outline-primary btn-sm" %>
+            <%= link_to "View product", furniture.url, target: "_blank", class: "btn btn-primary btn-sm" %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
