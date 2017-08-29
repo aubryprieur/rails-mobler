@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   post 'wishlists/add_and_create'
 
-  resources :wishlists, only: [:show, :create, :destroy]
+  resources :wishlists, only: [:show, :create, :destroy] do
+    resources :guest_wishlists, path: :users, module: :wishlists
+  end
 
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

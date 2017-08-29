@@ -53,4 +53,11 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Set default host for mailers, remember to do this in production as well!
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+
+  #letter_opener
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
