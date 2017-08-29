@@ -1,3 +1,22 @@
 <%= render 'banner' %>
 
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $("#ex2").slider({});
+  <% end %>
+<% end %>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $("#ex3").slider({});
+  <% end %>
+<% end %>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $("#ex4").slider({});
+  <% end %>
+<% end %>
+
+
 
