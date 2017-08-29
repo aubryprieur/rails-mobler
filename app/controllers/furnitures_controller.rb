@@ -4,7 +4,9 @@ class FurnituresController < ApplicationController
   def index
     @categories = Category.all
     @wishlist = Wishlist.new
-    if params[:search][:category].present?
+    return @furnitures = policy_scope(Furniture).page(params[:page]) unless params[:search].present?
+
+    if params.fetch(:search, {})[:category].present?
       @furnitures = policy_scope(Furniture).where(category: params[:search][:category],
                                                   width: (params[:search][:min_width].present? ? params[:search][:min_width].to_i : 0)..(params[:search][:max_width].present? ? params[:search][:max_width].to_i : 400),
                                                   height: (params[:search][:min_height].present? ? params[:search][:min_height].to_i : 0)..(params[:search][:max_height].present? ? params[:search][:max_height].to_i : 400),
@@ -21,6 +23,7 @@ class FurnituresController < ApplicationController
 
 
   def show
+    @wishlist = Wishlist.new
     @furniture = Furniture.find(params[:id])
     authorize @furniture
   end
