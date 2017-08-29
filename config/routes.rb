@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post 'wishlists/add_and_create'
 
+  get 'wishlists/furnitures_wishlists/show'
+
   resources :wishlists, only: [:show, :create, :destroy] do
     resources :guest_wishlists, path: :users, module: :wishlists
   end
