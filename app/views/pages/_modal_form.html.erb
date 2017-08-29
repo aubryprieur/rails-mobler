@@ -16,12 +16,16 @@
                 <br>
                 <h6 class="text-muted text-normal text-uppercase text-center margin-top-1x">Size</h6>
                 <hr class="margin-bottom-1x">
-                <div class="row">
-
-                  <%= f.input :length, as: :slider, min: 0, max: 400, range: true %>
-                  <%= f.input :width, as: :slider, min: 0, max: 400, range: true %>
-                  <%= f.input :height, as: :slider, min: 0, max: 400, range: true %>
-
+                <div class="row" id="size-home">
+                  <div class="col-xs-12 col-sm-12">
+                  <p>Lenght :</p><%= f.input :length, as: :slider, min: 0, max: 400, range: true, label: false %>
+                  </div>
+                  <div class="col-xs-12 col-sm-12">
+                  <p>Width :</p><%= f.input :width, as: :slider, min: 0, max: 400, range: true, label: false %>
+                  </div>
+                  <div class="col-xs-12 col-sm-12">
+                  <p>Height :</p><%= f.input :height, as: :slider, min: 0, max: 400, range: true, label: false %>
+                  </div>
                 </div>
                 <br><br>
                 <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1 btn-block' %>
