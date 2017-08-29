@@ -4,10 +4,10 @@
     before_action :set_wishlist
 
     def create
-      guest_wishlist = @wishlist.guest_wishlists.new(guest_wishlist_params)
-      guest_wishlist.wishlist = @wishlist
+      @guest_wishlist = @wishlist.guest_wishlists.new(guest_wishlist_params)
+      @guest_wishlist.wishlist = @wishlist
 
-      authorize(guest_wishlist)
+      authorize @guest_wishlist
 
       if guest_wishlist.save
         redirect_to @wishlist, notice: 'Saved!'
