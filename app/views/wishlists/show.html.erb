@@ -103,7 +103,7 @@
           <p class="tag text-center">L: <strong><%= furniture.length %></strong>cm - W: <strong><%= furniture.width %></strong>cm - H: <strong><%= furniture.height %>cm</strong></p>
           <div class="product-buttons">
             <%= link_to "Buy", furniture.url, target: "_blank", class: "btn btn-outline-primary btn-sm" %>
-            <%= link_to "View product", wishlists_furnitures_wishlists_show_path, target: "_blank", class: "btn btn-primary btn-sm" %>
+            <%= link_to "View product", furniture_path, target: "_blank", class: "btn btn-primary btn-sm" %>
           </div>
         </div>
       </div>
