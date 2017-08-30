@@ -6,6 +6,8 @@ class ProfilesController < ApplicationController
     @LastName = current_user.last_name
     @avatar = current_user.photo
     @email = current_user.email
+    @guest_wishlist = GuestWishlist.new
+    @guest_wishlists = current_user.guest_wishlists
     authorize :profile
   end
 

@@ -9,7 +9,7 @@
 
       authorize @guest_wishlist
 
-      if guest_wishlist.save
+      if @guest_wishlist.save
         redirect_to @wishlist, notice: 'Saved!'
       else
         redirect_to @wishlist, alert: 'Failed saving!'
