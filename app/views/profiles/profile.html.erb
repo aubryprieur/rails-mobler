@@ -3,7 +3,7 @@
     <div class="column">
       <div class="text-left">
         <%= link_to furnitures_path, class: 'btn btn-sm btn-outline-primary' do %>
-          <i class="icon-search"></i> <%= "new search" %>
+        <i class="icon-search"></i> <%= "new search" %>
         <% end %>
       </div>
     </div>
@@ -12,13 +12,12 @@
         <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal
         " title="Whishlist">New wishlist</button>
         <% content_for :modals do %>
-          <%= render 'new_wishlist' %>
+        <%= render 'new_wishlist' %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
 <div class="container padding-bottom-3x mb-2">
   <div class="row">
     <div class="col-lg-4">
@@ -26,53 +25,66 @@
         <div class="user-cover" style="background-image: url(theme/img/account/user-cover-img.jpg);"></div>
         <div class="user-info">
           <div class="user-avatar"><a class="edit-avatar" href="#"></a>
-            <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/50x50" %>
-            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          </div>
-          <div class="user-data" >
-            <h4><%= @FirstName %></h4><h4><%= @LastName %></h4><span><%= @email %></span>
-          </div>
+          <% avatar_url = current_user.facebook_picture_url || "https://lelakisihat.com/wp-content/uploads/2016/09/avatar.jpg" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         </div>
-      </aside>
-      <nav class="list-group"></nav>
-    </div>
-
-    <div class="col-xs12 col-sm-8">
-      <div class="row">
-        <% @wishlists.each do |wishlist| %>
-          <div class="col-xs-12 col-sm-6">
-            <div class="card mb-30"><a class="card-img-tiles" href="<%= wishlist_path(wishlist) %>">
-                <div class="inner">
-                  <div class="main-img"><%= image_tag avatar_url %></div>
-                  <div class="thumblist"><%= image_tag avatar_url %><%= image_tag avatar_url %></div>
-                </div></a>
-              <div class="card-block text-center">
-                <h4 class="card-title"><%= wishlist.title.capitalize %></h4>
-                <p>Owner: <%= wishlist.user.first_name %> <%= wishlist.user.last_name %></p>
-                <p class="text-muted"></p>
-                <%= link_to "View all items", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
-              </div>
-            </div>
+        <div class="user-data" >
+          <h4><%= @FirstName %></h4><h4><%= @LastName %></h4><span><%= @email %></span>
+        </div>
+      </div>
+    </aside>
+  <nav class="list-group"></nav>
+</div>
+<div class="col-xs12 col-sm-8">
+  <div class="row">
+    <% @wishlists.each do |wishlist| %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="card mb-30"><a class="card-img-tiles" href="<%= wishlist_path(wishlist) %>">
+        <div class="inner">
+          <div class="main-img"><% if wishlist.furnitures.first.nil? %>
+            <img src="https://hlfppt.org/wp-content/uploads/2017/04/placeholder.png">
+            <% else %>
+            <%= image_tag wishlist.furnitures.first.photo %>
+            <% end %>
           </div>
-        <% end %>
-        <% current_user.invited_wishlists.each do |guest_wishlist| %>
-
-          <div class="col-xs-12 col-sm-6">
-            <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ls.html">
-                <div class="inner">
-                  <div class="main-img"><%= image_tag avatar_url %></div>
-                  <div class="thumblist"><%= image_tag avatar_url %><%= image_tag avatar_url %></div>
-                </div></a>
-              <div class="card-block text-center">
-                <h4 class="card-title"><%= guest_wishlist.title.capitalize%></h4>
-                <p>Owner: <%= guest_wishlist.user.first_name %> <%= guest_wishlist.user.last_name %></p>
-                <p class="text-muted"></p>
-                <%= link_to "View all items", wishlist_path(guest_wishlist), class: "btn btn-outline-primary btn-sm" %>
-              </div>
-            </div>
+          <div class="thumblist"><% if wishlist.furnitures.second.nil? %>
+            <img src="https://hlfppt.org/wp-content/uploads/2017/04/placeholder.png">
+            <% else %>
+            <%= image_tag wishlist.furnitures.second.photo %>
+            <% end %>
+            <% if wishlist.furnitures.third.nil? %>
+            <img src="https://hlfppt.org/wp-content/uploads/2017/04/placeholder.png">
+            <% else %>
+            <%= image_tag wishlist.furnitures.third.photo %>
+            <% end %>
           </div>
-        <% end %>
+        </div></a>
+        <div class="card-block text-center">
+          <h4 class="card-title"><%= wishlist.title.capitalize %></h4>
+          <p>Owner: <%= wishlist.user.first_name %> <%= wishlist.user.last_name %></p>
+          <p class="text-muted"></p>
+          <%= link_to "View all items", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
+        </div>
       </div>
     </div>
+    <% end %>
+    <% current_user.invited_wishlists.each do |guest_wishlist| %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ls.html">
+        <div class="inner">
+          <div class="main-img"><%= image_tag avatar_url %></div>
+          <div class="thumblist"><%= image_tag avatar_url %><%= image_tag avatar_url %></div>
+        </div></a>
+        <div class="card-block text-center">
+          <h4 class="card-title"><%= guest_wishlist.title.capitalize%></h4>
+          <p>Owner: <%= guest_wishlist.user.first_name %> <%= guest_wishlist.user.last_name %></p>
+          <p class="text-muted"></p>
+          <%= link_to "View all items", wishlist_path(guest_wishlist), class: "btn btn-outline-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
+</div>
+</div>
 </div>
