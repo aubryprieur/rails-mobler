@@ -1,5 +1,6 @@
 puts 'Cleaning database...'
 FurnituresWishlist.destroy_all
+GuestWishlist.destroy_all
 Review.destroy_all
 Furniture.destroy_all
 Wishlist.destroy_all
@@ -469,41 +470,58 @@ furniturewishlist7 = FurnituresWishlist.create!(
   wishlist: wishlist4,
   furniture: Furniture.take ,
   )
-puts 'Finished! ---) FURNITURES-WISHLIST OK'
 
+puts 'Finished! ---) FURNITURES-WISHLIST OK'
+guestwishlist1 = GuestWishlist.create!(
+  wishlist: wishlist1,
+  user: User.first,
+  email: "contact@copas.coop"
+  )
+puts 'Creating guest-wishlist...'
+
+
+puts 'Finished! ---) GUEST-WISHLIST OK'
 
 puts 'Creating reviews...'
 review1 = Review.create!(
   content: "La couleur est pas mal, ne sais pas si ça va coller avec la déco de la pièce",
   furnitures_wishlist: furniturewishlist1,
+  user: user1
   )
 review2 = Review.create!(
   content: "Les dimensions sont nickels pour remplacer mon vieux meuble",
   furnitures_wishlist: furniturewishlist1,
+  user: user2
   )
 review3 = Review.create!(
   content: "Le meuble donne l'impression d'être solide",
   furnitures_wishlist: furniturewishlist1,
+  user: user2
   )
 review4 = Review.create!(
   content: "Je préfère une autre couleur dommage! Mais je le garde de coté quand même",
   furnitures_wishlist: furniturewishlist1,
+  user: user3
   )
 review5 = Review.create!(
   content: "Super pour la pendaison de crémaillère, la taille et la couleur c'est parfait!",
   furnitures_wishlist: furniturewishlist2,
+  user: user4
   )
 review5 = Review.create!(
   content: "Qu'est-ce qui est jaune et qui attend? HEN... Ben Jonathan...!",
   furnitures_wishlist: furniturewishlist2,
+  user: user5
   )
 review5 = Review.create!(
   content: "J'ai pas trop le style mais si je ne trouve rien d'autre, why not...",
   furnitures_wishlist: furniturewishlist2,
+  user: user2
   )
 review5 = Review.create!(
   content: "Facile à neetoyer, belle couleur, j'adore",
   furnitures_wishlist: furniturewishlist2,
+  user: user1
   )
 
 
