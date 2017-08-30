@@ -41,7 +41,7 @@
       <div class="row">
         <% @wishlists.each do |wishlist| %>
           <div class="col-xs-12 col-sm-6">
-            <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ls.html">
+            <div class="card mb-30"><a class="card-img-tiles" href="<%= wishlist_path(wishlist) %>">
                 <div class="inner">
                   <div class="main-img"><%= image_tag avatar_url %></div>
                   <div class="thumblist"><%= image_tag avatar_url %><%= image_tag avatar_url %></div>

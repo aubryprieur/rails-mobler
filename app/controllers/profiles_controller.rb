@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   def profile
+    @categories = Category.all
     @wishlist = Wishlist.new
     @wishlists = current_user.wishlists
     @FirstName = current_user.first_name

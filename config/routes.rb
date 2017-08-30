@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'wishlists/furnitures_wishlists/show'
 
-  resources :wishlists, only: [:show, :create, :destroy] do
+  resources :wishlists, only: [:show, :create, :update ,:destroy] do
     resources :guest_wishlists, path: :users, module: :wishlists
   end
 

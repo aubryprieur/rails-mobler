@@ -1,32 +1,50 @@
-<div class="modal fade" id="modal<%= @wishlist.id %>" tabindex="-1" role="dialog">
+<!-- ADD COLLABORATORS TO WISHLIST-->
+
+<div class="modal fade" id="modalCollab" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Add collaborator to</h4>
+        <h4 class="modal-title">Add collaborators</h4>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body margin-top-1x">
-        <div class="row">
-          <div class="col-md-4 text-left">
-            <h4>Users :</h4>
-            <% @wishlist.guest_wishlists.each do |guest| %>
-              <%= guest.email %>
-            <% end %>
-          </div>
-          <div class="col-md-8 text-right">
-            <div class="form-inline">
-              <%= form_for [@wishlist, GuestWishlist.new], :html => {class: 'form-inline'} do |f| %>
-              <div class="input-group">
-                <div class="input-group-addon">@</div>
+        <div class="container">
+          <%= form_for [@wishlist, GuestWishlist.new] do |f| %>
+            <div class="form-group">
+              <div class="col-12">
+                <!-- <input class="form-control" type="email" id="email-input" value="email@example.com"> -->
                 <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email" %>
               </div>
-              <div>
-                <%= f.submit "Invite", class: "btn btn-primary" %>
+              <%= f.submit "Invite", class: "btn btn-primary btn-block" %>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col-12">
+              <h4 class=" margin-top-2x text-center">All collaborators</h4>
+              <div class="table-responsive margin-bottom-2x">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Email</th>
+                      <th class="text-right">Delete collaborator?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @wishlist.guest_wishlists.each do |guest| %>
+                      <tr>
+                        <th><%= guest.email %></th>
+                        <td class="text-right"><i class="icon-cross"></i></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
               </div>
-              <% end %>
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
