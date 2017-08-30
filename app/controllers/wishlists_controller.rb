@@ -34,7 +34,17 @@ class WishlistsController < ApplicationController
   end
 
   def add_and_create
-
+    @wishlist = Wishlist.new(wishlist_params)
+    @wishlist.user = current_user
+    @wishlist.save
+    @item = FurnituresWishlist.new(furniture_id: params[:wishlist][:furniture_id], wishlist_id: @wishlist.id)
+    @item.wishlist = @wishlist
+    authorize @wishlist
+    if @item.save
+        redirect_back(fallback_location: root_path)
+      else
+        render :new
+    end
   end
 
   def wishlist_params

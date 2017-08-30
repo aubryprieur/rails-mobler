@@ -15,5 +15,9 @@ class WishlistPolicy < ApplicationPolicy
     def create?
       true
     end
+
+    def add_and_create?
+      true
+    end
 end
 
