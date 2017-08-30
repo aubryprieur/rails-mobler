@@ -47,9 +47,27 @@
                   <div class="thumblist"><%= image_tag avatar_url %><%= image_tag avatar_url %></div>
                 </div></a>
               <div class="card-block text-center">
-                <h4 class="card-title"><%= wishlist.title %></h4>
+                <h4 class="card-title"><%= wishlist.title.capitalize %></h4>
+                <p>Owner: <%= wishlist.user.first_name %> <%= wishlist.user.last_name %></p>
                 <p class="text-muted"></p>
                 <%= link_to "View all items", wishlist_path(wishlist), class: "btn btn-outline-primary btn-sm" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% current_user.invited_wishlists.each do |guest_wishlist| %>
+
+          <div class="col-xs-12 col-sm-6">
+            <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ls.html">
+                <div class="inner">
+                  <div class="main-img"><%= image_tag avatar_url %></div>
+                  <div class="thumblist"><%= image_tag avatar_url %><%= image_tag avatar_url %></div>
+                </div></a>
+              <div class="card-block text-center">
+                <h4 class="card-title"><%= guest_wishlist.title.capitalize%></h4>
+                <p>Owner: <%= guest_wishlist.user.first_name %> <%= guest_wishlist.user.last_name %></p>
+                <p class="text-muted"></p>
+                <%= link_to "View all items", wishlist_path(guest_wishlist), class: "btn btn-outline-primary btn-sm" %>
               </div>
             </div>
           </div>
