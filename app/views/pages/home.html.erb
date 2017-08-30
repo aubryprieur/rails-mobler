@@ -18,10 +18,3 @@
   <% end %>
 <% end %>
 
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-    var minLength = $('.tooltip-inner').text().split(":")[0];
-    $('.min-length').html(minLength);
-  <% end %>
-<% end %>
-

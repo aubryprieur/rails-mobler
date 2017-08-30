@@ -8,9 +8,17 @@
       <div class="modal-body margin-top-1x">
         <div class="row">
           <div class="col-sm-6 margin-bottom-1x">
-            <nav class="list-group">
-              <%= image_tag furniture.photo, class: "d-block mx-auto img-thumbnail mb-3" %>
-            </nav>
+
+              <%= simple_form_for @wishlist, :url => wishlists_add_and_create_path do |f| %>
+
+                  <%= f.input :title, class: 'form-control', placeholder: 'Ex: bedroom, table for living-room' %>
+                  <%= f.input :description,  as: :text, class: 'form-control', placeholder: 'Ex: A beautifull table for living-room' %>
+                  <%= f.hidden_field :furniture_id, :value => furniture.id %>
+                  <br>
+                <div class="form-inputs">
+                  <%= f.button :submit, "Create", class: 'btn btn-primary btn-block' %>
+                </div>
+              <% end %>
           </div>
           <div class="col-sm-6 margin-bottom-1x">
             <nav class="list-group">
@@ -21,16 +29,7 @@
                 </div>
               <% end %>
             </nav>
-            <div class="modal-body margin-top-1x">
-              <%= simple_form_for (@wishlist) do |f| %>
-                  <%= f.input :title, class: 'form-control', placeholder: 'Ex: bedroom, table for living-room' %>
-                  <%= f.input :description, class: 'form-control', placeholder: 'Ex: A beautifull table for living-room' %>
-                  <br>
-                <div class="form-inputs">
-                  <%= f.button :submit, "Create", class: 'btn btn-primary btn-block' %>
-                </div>
-              <% end %>
-            </div>
+
           </div>
         </div>
       </div>
