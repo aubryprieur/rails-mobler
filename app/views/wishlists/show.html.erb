@@ -24,7 +24,7 @@
 
         <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#modalCollab">Add collaborators <i class="icon-head"></i></button>
         <% content_for :modals do %>
-          <%= render 'add_collaborators', wishlist: @wishlist %>
+          <%= render 'add_collaborators', wishlist: @wishlist, guest_wishlist: @guest_wishlist %>
         <% end %>
       </div>
     </div>
