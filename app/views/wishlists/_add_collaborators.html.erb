@@ -33,7 +33,11 @@
                     <% @wishlist.guest_wishlists.each do |guest| %>
                       <tr>
                         <th><%= guest.email %></th>
-                        <td class="text-right"><i class="icon-cross"></i></td>
+                        <td class="text-right">
+                          <%= link_to wishlist_guest_wishlist_path(@wishlist, guest), method: :delete do %>
+                            <i class="icon-cross"></i>
+                          <% end %>
+                        </td>
                       </tr>
                     <% end %>
                   </tbody>
