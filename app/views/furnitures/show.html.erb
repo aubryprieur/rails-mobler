@@ -71,14 +71,14 @@
         </div>
         <div class="sp-buttons mt-2 mb-2">
           <% if user_signed_in? %>
-            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="modal" data-target="#modal<%=@furniture.id%>" title="Whishlist"><i class="icon-heart"></i></button>
+            <button class="btn btn-outline-danger btn-sm btn-wishlist" data-toggle="modal" data-target="#modal<%=@furniture.id%>" title="Whishlist"><i class="icon-heart"></i></button>
             <% content_for :modals do %>
               <%= render 'add_to_wishlist', furniture: @furniture %>
             <% end %>
           <% else %>
             <a href="<%= new_user_session_path%>" class="btn btn-outline-secondary btn-sm btn-wishlist"><i class="icon-heart"></i></a>
           <% end %>
-          <%= link_to "Buy", @furniture.url, target: "_blank", class: "btn btn-outline-primary btn-sm" %>
+          <%= link_to "Buy", @furniture.url, target: "_blank", class: "btn btn-primary btn-sm" %>
         </div>
       </div>
     </div>
