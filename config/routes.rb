@@ -10,10 +10,9 @@ Rails.application.routes.draw do
 
   post 'wishlists/add_and_create'
 
-  get 'wishlists/furnitures_wishlists/show'
-
   resources :wishlists, only: [:show, :create, :update ,:destroy] do
     resources :guest_wishlists, path: :users, module: :wishlists
+    resources :furnitures, only: [:show, :destroy], controller: 'wishlists/furnitures_wishlists'
   end
 
   devise_for :users,
