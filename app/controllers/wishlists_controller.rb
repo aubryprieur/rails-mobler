@@ -1,6 +1,8 @@
 class WishlistsController < ApplicationController
   before_action :authenticate_user!
   def show
+    @categories = Category.all
+    @search = Search.new(search_params)
     @wishlist = Wishlist.find(params[:id])
     @furnitures = @wishlist.furnitures
     authorize @wishlist
@@ -17,6 +19,14 @@ class WishlistsController < ApplicationController
     @wishlist = Wishlist.new(wishlist_params)
     @wishlist.user = current_user
     @wishlist.save
+    authorize @wishlist
+    redirect_back(fallback_location: root_path)
+  end
+
+  def update
+    @wishlist = Wishlist.new(wishlist_params)
+    @wishlist = Wishlist.find(params[:id])
+    @wishlist.update(wishlist_params)
     authorize @wishlist
     redirect_back(fallback_location: root_path)
   end
@@ -47,7 +57,17 @@ class WishlistsController < ApplicationController
     end
   end
 
+
   def wishlist_params
     params.require(:wishlist).permit(:title, :description)
+  end
+
+  def search_params
+    if params[:search].present?
+      p = params.require(:search).permit!
+      session[:search] = p
+    else
+      session[:search]
+    end
   end
 end
