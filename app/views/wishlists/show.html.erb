@@ -53,7 +53,7 @@
     <% @furnitures.each do |furniture| %>
       <div class="col-xs-12 col-sm-4">
         <div class="product-card text-center">
-          <%= link_to furniture_path(furniture) do %>
+          <%= link_to wishlist_furniture_path(@wishlist, furniture) do %>
             <%= image_tag furniture.photo, class: "product-thumb" %>
           <% end %>
           <h2 class="product-title"><%= furniture.title %> - <strong><%= furniture.price.to_s.gsub(".0", "").gsub(".", ",") %> € </strong></h2>
