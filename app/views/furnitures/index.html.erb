@@ -4,18 +4,20 @@
       <%= simple_form_for @search, method: :get, url: furnitures_path do |f| %>
         <div class="row">
           <div class="col-md-3">
+
             <div class="form-group text-center">
-              <%= f.input :length, as: :slider, min: 0, max: 400, range: true %>
+              <p>Length :</p><%= f.input :length, as: :slider, min: 0, max: 400, range: true, label: false %>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group text-center">
-              <%= f.input :width, as: :slider, min: 0, max: 400, range: true %>
+              <p>Width :</p><%= f.input :width, as: :slider, min: 0, max: 400, range: true, label: false %>
             </div>
+
           </div>
           <div class="col-md-3">
             <div class="form-group text-center">
-              <%= f.input :height, as: :slider, min: 0, max: 400, range: true %>
+              <p>Height :</p><%= f.input :height, as: :slider, min: 0, max: 400, range: true, label: false %>
             </div>
           </div>
           <div class="col-md-2">
