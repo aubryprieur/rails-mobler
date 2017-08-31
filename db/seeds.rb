@@ -112,7 +112,8 @@ doc.search('#all_products_01').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+    ikea_price = element.search('.regularPrice').text.split(' ').first
+    ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
@@ -126,9 +127,10 @@ doc.search('#all_products_01').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price,
+        price_cents: price,
         url: v_link,
-        category: Category.find_or_create_by(name: categories[0])
+        category: Category.find_or_create_by(name: categories[0]),
+        sku: rand(36**8).to_s(36)
         )
         # p f.inspect
       end
@@ -142,7 +144,8 @@ doc.search('#all_products_01').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+    ikea_price = element.search('.regularPrice').text.split(' ').first
+    ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
@@ -156,9 +159,10 @@ doc.search('#all_products_01').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price,
+        price_cents: price,
         url: v_link,
-        category: Category.find_or_create_by(name: categories[1])
+        category: Category.find_or_create_by(name: categories[1]),
+        sku: rand(36**8).to_s(36)
         )
         p f.inspect
       end
@@ -172,7 +176,8 @@ doc.search('#all_products_01').each do |element|
       v_link = base_url + element.search('a').attribute('href').text.strip
       title = element.search('.productTitle').text.strip
       description = element.search('.productDesp').text.strip
-      price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+      ikea_price = element.search('.regularPrice').text.split(' ').first
+      ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
       pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
       match_data = element.search('.size').text.match(pattern)
       height = match_data[:height] if match_data
@@ -186,15 +191,16 @@ doc.search('#all_products_01').each do |element|
           height: height.to_i,
           width: width.to_i,
           length: lenght.to_i,
-          price: price,
+          price_cents: price,
           url: v_link,
-          category: Category.find_or_create_by(name: categories[2])
+          category: Category.find_or_create_by(name: categories[2]),
+          sku: rand(36**8).to_s(36)
           )
           p f.inspect
         end
       end
     end
-end
+  end
 
 
 categories2 = []
@@ -214,7 +220,8 @@ doc.search('#all_products_04').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+    ikea_price = element.search('.regularPrice').text.split(' ').first
+    ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
@@ -228,9 +235,10 @@ doc.search('#all_products_04').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price,
+        price_cents: price,
         url: v_link,
-        category: Category.find_or_create_by(name: categories2[0])
+        category: Category.find_or_create_by(name: categories2[0]),
+        sku: rand(36**8).to_s(36)
         )
         p f.inspect
       end
@@ -244,7 +252,8 @@ doc.search('#all_products_04').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+    ikea_price = element.search('.regularPrice').text.split(' ').first
+    ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
@@ -258,9 +267,10 @@ doc.search('#all_products_04').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price,
+        price_cents: price,
         url: v_link,
-        category: Category.find_or_create_by(name: categories2[1])
+        category: Category.find_or_create_by(name: categories2[1]),
+        sku: rand(36**8).to_s(36)
         )
         p f.inspect
       end
@@ -274,7 +284,8 @@ doc.search('#all_products_04').each do |element|
       v_link = base_url + element.search('a').attribute('href').text.strip
       title = element.search('.productTitle').text.strip
       description = element.search('.productDesp').text.strip
-      price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+      ikea_price = element.search('.regularPrice').text.split(' ').first
+      ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
       pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
       match_data = element.search('.size').text.match(pattern)
       height = match_data[:height] if match_data
@@ -288,9 +299,10 @@ doc.search('#all_products_04').each do |element|
           height: height.to_i,
           width: width.to_i,
           length: lenght.to_i,
-          price: price,
+          price_cents: price,
           url: v_link,
-          category: Category.find_or_create_by(name: categories2[2])
+          category: Category.find_or_create_by(name: categories2[2]),
+          sku: rand(36**8).to_s(36)
           )
           p f.inspect
         end
@@ -315,7 +327,8 @@ doc.search('#all_products_03').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+    ikea_price = element.search('.regularPrice').text.split(' ').first
+    ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
@@ -329,9 +342,10 @@ doc.search('#all_products_03').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price,
+        price_cents: price,
         url: v_link,
-        category: Category.find_or_create_by(name: categories3[0])
+        category: Category.find_or_create_by(name: categories3[0]),
+        sku: rand(36**8).to_s(36)
         )
         p f.inspect
       end
@@ -345,7 +359,8 @@ doc.search('#all_products_03').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+    ikea_price = element.search('.regularPrice').text.split(' ').first
+    ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
@@ -359,9 +374,10 @@ doc.search('#all_products_03').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price,
+        price_cents: price,
         url: v_link,
-        category: Category.find_or_create_by(name: categories3[1])
+        category: Category.find_or_create_by(name: categories3[1]),
+        sku: rand(36**8).to_s(36)
         )
         p f.inspect
       end
@@ -375,7 +391,8 @@ doc.search('#all_products_03').each do |element|
       v_link = base_url + element.search('a').attribute('href').text.strip
       title = element.search('.productTitle').text.strip
       description = element.search('.productDesp').text.strip
-      price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+      ikea_price = element.search('.regularPrice').text.split(' ').first
+      ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
       pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
       match_data = element.search('.size').text.match(pattern)
       height = match_data[:height] if match_data
@@ -389,9 +406,10 @@ doc.search('#all_products_03').each do |element|
           height: height.to_i,
           width: width.to_i,
           length: lenght.to_i,
-          price: price,
+          price_cents: price,
           url: v_link,
-          category: Category.find_or_create_by(name: categories3[2])
+          category: Category.find_or_create_by(name: categories3[2]),
+          sku: rand(36**8).to_s(36)
           )
           p f.inspect
         end
@@ -414,7 +432,8 @@ doc.search('#all_products_02').each do |element|
     v_link = base_url + element.search('a').attribute('href').text.strip
     title = element.search('.productTitle').text.strip
     description = element.search('.productDesp').text.strip
-    price = element.search('.regularPrice').text.split(' ').first.gsub(/[[:space:]]/, '').gsub(",", ".").to_f
+    ikea_price = element.search('.regularPrice').text.split(' ').first
+    ikea_price.include?(",") ? price = ikea_price.gsub(",", "").to_i : price = ikea_price.gsub(/[[:space:]]/, '').to_i * 100
     pattern = /^\s+Largeur:\s(?<width>\d{1,}.?\d)\scm,\s+Profondeur:\s(?<lenght>\d{1,}.?\d)\scm,\s+Hauteur:\s(?<height>\d{1,}.?\d)\scm/
     match_data = element.search('.size').text.match(pattern)
     height = match_data[:height] if match_data
@@ -428,9 +447,10 @@ doc.search('#all_products_02').each do |element|
         height: height.to_i,
         width: width.to_i,
         length: lenght.to_i,
-        price: price,
+        price_cents: price,
         url: v_link,
-        category: Category.find_or_create_by(name: categories4[1])
+        category: Category.find_or_create_by(name: categories4[1]),
+        sku: rand(36**8).to_s(36)
         )
         p f.inspect
       end
@@ -531,7 +551,3 @@ puts 'Finished! ---) REVIEW OK! '
 puts '#################################################################################'
 puts '################################# EXCELLENT TRAVAIL #############################'
 puts '#################################################################################'
-
-
-
-
