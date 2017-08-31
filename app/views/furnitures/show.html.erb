@@ -10,53 +10,38 @@
 
 <div class="container padding-bottom-3x mb-1">
   <div class="row">
-    <div class="col-md-6">
 
     <!-- PRODUCT GALLERIE  -->
-
-      <div class="product-gallery">
-        <div class="gallery-wrapper">
-          <div class="gallery-item active"><%= image_tag @furniture.photo %></div>
-          <div class="gallery-item"><%= image_tag @furniture.photo %></div>
-          <div class="gallery-item"><%= image_tag @furniture.photo %></div>
-          <div class="gallery-item"><%= image_tag @furniture.photo %></div>
-          <div class="gallery-item"><%= image_tag @furniture.photo %></div>
-        </div>
-        <div class="product-carousel owl-carousel">
-          <div data-hash="one"><%= image_tag @furniture.photo %></div>
-          <div data-hash="two"><%= image_tag @furniture.photo %></div>
-          <div data-hash="three"><%= image_tag @furniture.photo %></div>
-          <div data-hash="four"><%= image_tag @furniture.photo %></div>
-          <div data-hash="five"><%= image_tag @furniture.photo %></div>
-        </div>
-        <ul class="product-thumbnails">
-          <li class="active"><a href="#one"><%= image_tag @furniture.photo %></a></li>
-          <li><a href="#two"><%= image_tag @furniture.photo %></a></li>
-          <li><a href="#three"><%= image_tag @furniture.photo %></a></li>
-          <li><a href="#four"><%= image_tag @furniture.photo %></a></li>
-          <li><a href="#five"><%= image_tag @furniture.photo %></a></li>
-        </ul>
+    <div class="col-md-6">
+      <div class="product-card">
+        <%= image_tag @furniture.photo, class: "img-total-width" %>
       </div>
     </div>
 
     <!-- PRODUCT DESCRIPTION -->
 
-    <div class="col-md-6">
+    <div class="col-md-6 padding-left-1x padding-top-2x">
       <div class="padding-top-2x mt-2 hidden-md-up"></div>
-      <h2 class="padding-top-1x text-normal"><%= @furniture.title %></h2>
-      <span class="h2 d-block"><%= humanized_money(@furniture.price) %> € </span>
+        <div class="row justify-content-between ">
+          <div class="column">
+            <h2 class="text-normal padding-left-title"><%= @furniture.title %></h2>
+          </div>
+          <div class="column text-right padding-left-title">
+            <span class="h2 d-block"><%= humanized_money(@furniture.price) %> € </span>
+          </div>
+        </div>
       <hr class="mb-3">
-      <div class=" mb-2 widget widget-tags">
-        <span class="text-medium">Size:</span>
-        <a class="tag active" href="#">Lenght: <%= @furniture.length %> cm</a>
-        <a class="tag active" href="#">Width: <%= @furniture.width %> cm</a>
-        <a class="tag active" href="#">Heigth: <%= @furniture.height %> cm</a>
-      </div>
       <p><%= @furniture.description %></p>
       <br>
       <div class=" mb-2 widget widget-tags">
         <span class="text-medium">Categories:&nbsp;</span>
         <a class="tag" href="#"> <%= @furniture.category.name %></a>
+      </div>
+      <div class=" mb-2 widget widget-tags justify-content-between">
+        <span class="text-medium">Size:</span>
+        <a class="tag" href="#">Lenght: <%= @furniture.length %> cm</a>
+        <a class="tag" href="#">Width: <%= @furniture.width %> cm</a>
+        <a class="tag" href="#">Heigth: <%= @furniture.height %> cm</a>
       </div>
       <hr class="mb-3">
       <div class="d-flex flex-wrap justify-content-between">
@@ -71,7 +56,7 @@
         </div>
         <div class="sp-buttons mt-2 mb-2">
           <% if user_signed_in? %>
-            <button class="btn btn-outline-danger btn-sm btn-wishlist" data-toggle="modal" data-target="#modal<%=@furniture.id%>" title="Whishlist"><i class="icon-heart"></i></button>
+            <button class="btn btn-outline-danger btn-sm " data-toggle="modal" data-target="#modal<%=@furniture.id%>" title="Whishlist"><i class="icon-heart"></i></button>
             <% content_for :modals do %>
               <%= render 'add_to_wishlist', furniture: @furniture %>
             <% end %>
@@ -101,13 +86,13 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="description" role="tabpanel">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error blanditiis a, deserunt magnam pariatur quam suscipit quae. Veniam, deserunt reprehenderit quasi hic recusandae itaque omnis fugiat animi architecto facilis repellendus. Commodi dolorem, eius consectetur. Amet maiores nemo at nobi s aspernatur velit, sequi odio, a veritatis inventore autem esse provident in? Placeat, sunt!</p>
-          <p class="mb-30">Iste assumenda, vitae, aliquam excepturi libero quia ullam quisquam tenetur id sint labore. Pariatur praesentium velit, fugit facere maxime voluptates optio qui? Quidem obcaecati necessitatibus rem aspernatur, mollitia, assumenda explicabo numquam minus eos sapiente totam dicta, laborum dolorum! Vitae distinctio quos non ut fugiat.</p>
+          <p>Il existe un choix de housses pour vous permettre de renouveler facilement l'aspect de votre canapé et celui de toute la pièce.</p>
+          <p class="mb-30">Structure canapé 2 places: Structure: contreplaqué, Panneau de particules résistant à l'humidité, Panneau de fibres de bois, bois massif. Garnissage: Rembourrage fibres creuses en polyester, Mousse polyuréthane 30 kg/m3. Pied: acier, revêtement époxy/polyester (poudre), polypropylène. Housse de canapé 2pla: 100% polyester</p>
         </div>
         <div class="tab-pane fade" id="reviews" role="tabpanel">
           <!-- Review-->
           <div class="comment">
-            <div class="comment-author-ava"><img src="img/reviews/01.jpg" alt="Review author"></div>
+            <div class="comment-author-ava"><img src="http://i.pravatar.cc/150?img=4" alt="Review author"></div>
             <div class="comment-body">
               <div class="comment-header d-flex flex-wrap justify-content-between">
                 <h4 class="comment-title">Average quality for the price</h4>
@@ -122,7 +107,7 @@
           </div>
           <!-- Review-->
           <div class="comment">
-            <div class="comment-author-ava"><img src="img/reviews/02.jpg" alt="Review author"></div>
+            <div class="comment-author-ava"><img src="http://i.pravatar.cc/150?img=5" alt="Review author"></div>
             <div class="comment-body">
               <div class="comment-header d-flex flex-wrap justify-content-between">
                 <h4 class="comment-title">My husband love his new...</h4>
@@ -137,7 +122,7 @@
           </div>
           <!-- Review-->
           <div class="comment">
-            <div class="comment-author-ava"><img src="img/reviews/03.jpg" alt="Review author"></div>
+            <div class="comment-author-ava"><img src="http://i.pravatar.cc/150?img=6" alt="Review author"></div>
             <div class="comment-body">
               <div class="comment-header d-flex flex-wrap justify-content-between">
                 <h4 class="comment-title">Soft, comfortable, quite durable...</h4>
