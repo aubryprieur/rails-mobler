@@ -1,33 +1,35 @@
 <div class="modal fade" id="modal<%= furniture.id %>" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Choisir une wishlist pour " <%= furniture.title %> "</h4>
+        <h4 class="modal-title">Choose wishlist for " <%= furniture.title %> "</h4>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body margin-top-1x">
-        <div class="row">
-          <div class="col-sm-6 margin-bottom-1x">
-            <nav class="list-group">
-              <%= image_tag furniture.photo, class: "d-block mx-auto img-thumbnail mb-3" %>
-            </nav>
-          </div>
-          <div class="col-sm-6 margin-bottom-1x">
-            <nav class="list-group">
-              <% current_user.wishlists.each do |wishlist| %>
-                <div class="list-group-item justify-content-between">
-                  <%= wishlist.title %>
-                  <span><%= link_to 'ajouter', wishlists_add_item_path(wishlist_id: wishlist.id, furniture_id: furniture.id), class: 'btn btn-sm btn-outline-danger', method: :post %></span>
-                </div>
-              <% end %>
-            </nav>
-            <div class="modal-body margin-top-1x">
-              <%= simple_form_for (@wishlist) do |f| %>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 margin-bottom-1x">
+              <div class="col-sm-12 margin-bottom-1x">
+                <nav class="list-group">
+                  <% current_user.wishlists.each do |wishlist| %>
+                    <div class="list-group-item justify-content-between">
+                      <%= wishlist.title %>
+                      <span><%= link_to 'Add', wishlists_add_item_path(wishlist_id: wishlist.id, furniture_id: furniture.id), class: 'btn btn-sm btn-outline-danger', method: :post %></span>
+                    </div>
+                  <% end %>
+                </nav>
+              </div>
+
+              <hr class="margin-bottom-2x margin-top-2x">
+              <h3 class="text-center margin-bottom-1x">Add to a new wishlist</h3>
+
+              <%= simple_form_for @wishlist, :url => wishlists_add_and_create_path do |f| %>
                   <%= f.input :title, class: 'form-control', placeholder: 'Ex: bedroom, table for living-room' %>
-                  <%= f.input :description, class: 'form-control', placeholder: 'Ex: A beautifull table for living-room' %>
+                  <%= f.input :description,  as: :text, class: 'form-control', placeholder: 'Ex: A beautifull table for living-room' %>
+                  <%= f.hidden_field :furniture_id, :value => furniture.id %>
                   <br>
                 <div class="form-inputs">
-                  <%= f.button :submit, "Create", class: 'btn btn-primary btn-block' %>
+                  <%= f.button :submit, "Create and add to this wishlist", class: 'btn btn-primary btn-block' %>
                 </div>
               <% end %>
             </div>

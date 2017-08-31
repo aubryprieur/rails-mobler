@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :wishlists, dependent: :destroy
   has_many :guest_wishlists
   has_many :invited_wishlists, :through => :guest_wishlists, :source => :wishlist
+  has_many :donations
 
   attribute :email, :string
   # Include default devise modules. Others available are:

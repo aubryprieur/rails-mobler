@@ -25,6 +25,8 @@ gem 'bootstrap-slider-rails'
 gem 'kaminari'
 gem 'devise_invitable'
 gem 'postmark-rails'
+gem 'money-rails'
+gem 'stripe'
 
 group :development, :test do
   gem 'pry-byebug'

@@ -16,42 +16,27 @@
               <br>
               <h6 class="text-muted text-normal text-uppercase text-center margin-top-1x">Size</h6>
               <hr class="margin-bottom-1x">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 text-center">
+              <div class="col-xs-12 col-sm-12 text-center" id="first-slider">
+              </p><%= f.input :length, as: :slider, min: 0, max: 400, range: true, label: false %>
+            </div>
+                <div class="text-center" id="txt1">
                   <p>Lenght (cm):</p>
                 </div>
-                <div class="col-xs-12 col-sm-12 text-center">
-                </p><%= f.input :length, as: :slider, min: 0, max: 400, range: true, label: false %>
-              </div>
-              <div class="col-xs-12 col-sm-12 text-center">
-                <p></p>
-              </div>
-              <div class="col-xs-12 col-sm-12 text-center">
-                <p>Width (cm):</p>
-              </div>
-              <div class="col-xs-12 col-sm-12 text-center">
-                <p></p>
-              </div>
-              <div class="col-xs-12 col-sm-12 text-center">
-                <%= f.input :width, as: :slider, min: 0, max: 400, range: true, label: false %>
-              </div>
-              <div class="col-xs-12 col-sm-12 text-center">
-                <p></p>
-              </div>
-              <div class="col-xs-12 col-sm-12 text-center">
-                <p>Height (cm):</p>
-              </div>
-              <div class="col-xs-12 col-sm-12 text-center">
-                <p></p>
-              </div>
-              <div class="col-xs-12 col-sm-12 text-center">
-                <%= f.input :height, as: :slider, min: 0, max: 400, range: true, label: false %>
-              </div>
+            <div class="col-xs-12 col-sm-12 text-center">
+              <%= f.input :width, as: :slider, min: 0, max: 400, range: true, label: false %>
             </div>
-
-            <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1 btn-block' %>
-            <% end %>
+                <div class="text-center" id="txt2">
+                  <p>Width (cm):</p>
+                </div>
+            <div class="col-xs-12 col-sm-12 text-center">
+              <%= f.input :height, as: :slider, min: 0, max: 400, range: true, label: false %>
+            </div>
+                <div class="text-center" id="txt3">
+                  <p>Height (cm):</p>
+                </div>
           </div>
+          <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1 btn-block' %>
+          <% end %>
         </div>
       </div>
     </div>

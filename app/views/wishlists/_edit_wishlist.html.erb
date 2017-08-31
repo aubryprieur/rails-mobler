@@ -1,0 +1,26 @@
+<!-- EDIT & DELETE WISHLIST-->
+
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit wishlist</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body ">
+        <%= link_to "Delete this wishlist!", wishlist_path(@wishlist), :method => 'delete', class: "btn btn-outline-danger btn-block" %>
+        <hr class="margin-top-1x">
+
+
+        <%= simple_form_for (@wishlist) do |f| %>
+            <%= f.input :title, required: false, autofocus: true, class: 'form-control form-control-warning' %>
+            <%= f.input :description, required: false %>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
+        <%= f.button :submit, "Save", class: "btn btn-primary btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

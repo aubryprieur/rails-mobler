@@ -1,0 +1,61 @@
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Choose the perfect size!</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body margin-top-1x">
+        <div class="row align-items-center">
+          <div class="col-xs-12 col-sm-12">
+            <div class="form-inputs" id="form">
+              <%= simple_form_for Search.new, method: :get, url: furnitures_path do |f| %>
+              <div class="col-xs-12">
+                <%= f.input :category, collection: @categories, class: 'form-control', placeholder: 'toto' %>
+              </div>
+              <br>
+              <h6 class="text-muted text-normal text-uppercase text-center margin-top-1x">Size</h6>
+              <hr class="margin-bottom-1x">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 text-center">
+                  <p>Lenght (cm):</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 text-center">
+                </p><%= f.input :length, as: :slider, min: 0, max: 400, range: true, label: false %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 text-center">
+                <p></p>
+              </div>
+              <div class="col-xs-12 col-sm-12 text-center">
+                <p>Width (cm):</p>
+              </div>
+              <div class="col-xs-12 col-sm-12 text-center">
+                <p></p>
+              </div>
+              <div class="col-xs-12 col-sm-12 text-center">
+                <%= f.input :width, as: :slider, min: 0, max: 400, range: true, label: false %>
+              </div>
+              <div class="col-xs-12 col-sm-12 text-center">
+                <p></p>
+              </div>
+              <div class="col-xs-12 col-sm-12 text-center">
+                <p>Height (cm):</p>
+              </div>
+              <div class="col-xs-12 col-sm-12 text-center">
+                <p></p>
+              </div>
+              <div class="col-xs-12 col-sm-12 text-center">
+                <%= f.input :height, as: :slider, min: 0, max: 400, range: true, label: false %>
+              </div>
+            </div>
+            <%= f.submit 'Rechercher', class: 'btn btn-primary scale-up delay-1 btn-block' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
