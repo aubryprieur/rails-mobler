@@ -2,8 +2,9 @@
   <div class="container">
     <div class="column">
       <div class="text-left">
-        <%= link_to furnitures_path, class: 'btn btn-sm btn-outline-primary' do %>
-        <i class="icon-search"></i> <%= "new search" %>
+        <button class="btn btn-sm btn-outline-secondary " data-toggle="modal" data-target="#modal" title="search"><i class="icon-search"></i> New search</button>
+        <% content_for :modals do %>
+          <%= render 'modal_search' %>
         <% end %>
       </div>
     </div>

@@ -49,9 +49,9 @@
 <!-- Card V2 (Bertrand) -->
 
 <div class="container margin-bottom-4x">
-  <div class="row">
+  <div class="row margin-top-2x">
     <% @furnitures.each do |furniture| %>
-      <div class="col-xs-12 col-sm-4">
+      <div class="col-xs-12 col-sm-4 margin-bottom-1x">
         <div class="product-card text-center">
           <%= image_tag furniture.photo, class: "product-thumb" %>
           <p class="tag text-center">L: <strong><%= furniture.length %></strong>cm - W: <strong><%= furniture.width %></strong>cm - H: <strong><%= furniture.height %>cm</strong></p>
@@ -112,8 +112,8 @@
 
             <!-- Navbar Page -->
             <div class="row">
-              <div class="col-md-6 text-left">
-                <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#modaldefault<%=furniture.id%>" title="Whishlist">New review</button>
+              <div class="col-md-12 text-right">
+                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modaldefault<%=furniture.id%>" title="Whishlist">New review</button>
                 <% f_w = FurnituresWishlist.where(wishlist: @wishlist).where(furniture: furniture).first.id %>
                 <% content_for :modals do %>
                   <%= render 'comment', f_w_id: f_w, review: Review.new , furniture: furniture%>
