@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-6 text-left">
         <%= link_to profile_path, class: 'btn btn-sm btn-outline-primary' do %>
-          <i class="icon-arrow-left"></i> <%= "All wishlists" %>
+        <i class="icon-arrow-left"></i> <%= "All wishlists" %>
         <% end %>
         <button class="btn btn-sm btn-outline-secondary " data-toggle="modal" data-target="#modal" title="search"><i class="icon-search"></i> New search</button>
         <% content_for :modals do %>
@@ -36,6 +36,37 @@
         <h1><strong><%= @wishlist.title %></strong></h1>
         <br>
         <p> You have <strong><%= @wishlist.furnitures.count %> furnitures</strong> in this wishlist</p>
+        <div>
+          <%= form_tag url_for(:controller => 'donations', :action => 'create') do %>
+          <div id="error_explanation">
+            <% if flash[:error].present? %>
+            <p><%= flash[:error] %></p>
+            <% end %>
+          </div>
+          <article>
+            <%= label_tag(:amount, 'Donation Amount:') %>
+            <%= text_field_tag(:amount) %>
+          </article>
+          <article>
+            <%= hidden_field_tag 'wishlist_id', @wishlist.id %>
+          </article>
+          <%= submit_tag 'Donation', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+        <div>
+
+
+          <h4>Donation</h4>
+
+          TOTAL: <strong><%= @wishlist.donations.sum("amount_cents")/100 %>€</strong>
+          <ul class="list-unstyled">
+            <% @wishlist.donations.each do |donation| %>
+
+            <li><%= User.find(donation.user_id).last_name unless donation.user_id.nil? %><%= User.find(donation.user_id).first_name unless donation.user_id.nil? %> : <%= donation.amount %> </li>
+            <% end %>
+          </ul>
+
+        </div>
       </div>
       <div class="col-md-7 text-right">
         <p class=""><strong> Description: </strong><%= @wishlist.description %></p>
@@ -43,6 +74,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- Page BODY -->
 
@@ -83,7 +115,7 @@
                     <h2 class="text-normal"><%= furniture.title %></h2>
                   </div>
                   <div class="column text-right">
-                    <span class="h2 d-block"><%= furniture.price.to_s.gsub(".0", "").gsub(".", ",") %> € </span>
+                    <span class="h2 d-block"><%= humanized_money(furniture.price) %> € </span>
                   </div>
                 </div>
                 <hr class="margin-bottom-2x">
@@ -146,6 +178,7 @@
     <% end %>
   </div>
 </div>
+
 
 
 

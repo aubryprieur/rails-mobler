@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'charges/new'
+
+  get 'charges/create'
+
   get 'reviews/show'
 
   root to: 'pages#home'
@@ -13,6 +17,10 @@ Rails.application.routes.draw do
   resources :wishlists, only: [:show, :create, :update ,:destroy] do
     resources :guest_wishlists, path: :users, module: :wishlists
     resources :furnitures, only: [:show, :destroy], controller: 'wishlists/furnitures_wishlists'
+  end
+
+  resources :donations, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
   end
 
   devise_for :users,

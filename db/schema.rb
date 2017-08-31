@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829122435) do
+ActiveRecord::Schema.define(version: 20170831150021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20170829122435) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.integer "amount_cents", default: 0, null: false
+    t.bigint "wishlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_donations_on_user_id"
+    t.index ["wishlist_id"], name: "index_donations_on_wishlist_id"
   end
 
   create_table "furnitures", force: :cascade do |t|
@@ -33,6 +43,8 @@ ActiveRecord::Schema.define(version: 20170829122435) do
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "sku"
     t.index ["category_id"], name: "index_furnitures_on_category_id"
   end
 
@@ -53,6 +65,15 @@ ActiveRecord::Schema.define(version: 20170829122435) do
     t.string "email"
     t.index ["user_id"], name: "index_guest_wishlists_on_user_id"
     t.index ["wishlist_id"], name: "index_guest_wishlists_on_wishlist_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.json "payment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "furniture_sku"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -111,6 +132,8 @@ ActiveRecord::Schema.define(version: 20170829122435) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
+  add_foreign_key "donations", "users"
+  add_foreign_key "donations", "wishlists"
   add_foreign_key "furnitures", "categories"
   add_foreign_key "furnitures_wishlists", "furnitures"
   add_foreign_key "furnitures_wishlists", "wishlists"

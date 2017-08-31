@@ -16,4 +16,6 @@ class Furniture < ApplicationRecord
   validates :price, presence: true
   validates :url, presence: true
 
+  monetize :price_cents
+
 end

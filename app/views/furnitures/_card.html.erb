@@ -3,7 +3,7 @@
     <%= link_to furniture_path(furniture) do %>
       <%= image_tag furniture.photo, class: "product-thumb" %>
     <% end %>
-    <h2 class="product-title"><%= link_to furniture.title, furniture_path(furniture) %> - <strong><%= furniture.price.to_s.gsub(".0", "").gsub(".", ",") %> € </strong></h2>
+    <h2 class="product-title"><%= link_to furniture.title, furniture_path(furniture) %> - <strong><%= humanized_money(furniture.price).gsub(",", "")%></strong>€</h2>
     <p class="tag text-center">L: <strong><%= furniture.length %></strong>cm - W: <strong><%= furniture.width %></strong>cm - H: <strong><%= furniture.height %>cm</strong></p>
     <div class="product-buttons">
       <% if user_signed_in? %>
