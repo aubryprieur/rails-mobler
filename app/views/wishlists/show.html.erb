@@ -56,11 +56,10 @@
           <%= image_tag furniture.photo, class: "product-thumb" %>
           <p class="tag text-center">L: <strong><%= furniture.length %></strong>cm - W: <strong><%= furniture.width %></strong>cm - H: <strong><%= furniture.height %>cm</strong></p>
           <div class=" mb-2 widget widget-tags">
-            <a class="tag" href="#"> Category: <strong><%= furniture.category %></strong></a>
+            <a class="tag" href="#"> Category: <strong><%= furniture.category.name %></strong></a>
           </div>
         </div>
       </div>
-
 
       <div class="col-xs-12 col-sm-8 margin-top-1x">
         <ul class="nav nav-tabs" role="tablist">
