@@ -125,9 +125,14 @@
             <!-- Review-->
             <% reviews = furniture.furnitures_wishlists.where(wishlist: @wishlist).first.reviews %>
             <% reviews.each do |review| %>
-            <% avatar_url = current_user.facebook_picture_url || "https://lelakisihat.com/wp-content/uploads/2016/09/avatar.jpg" %>
+            <% avatar_url = User.find(review.user_id).photo || "https://lelakisihat.com/wp-content/uploads/2016/09/avatar.jpg" %>
               <div class="comment">
-                <div class="comment-author-ava"><img src="<%= avatar_url %>" alt="Review author"></div>
+                <div class="comment-author-ava">
+
+                    <img src="<%= avatar_url %>" alt="Review author">
+
+
+                </div>
                 <div class="comment-body">
                   <div class="comment-header d-flex flex-wrap justify-content-between"></div>
                   <p class="comment-text"><%= review.content %></p>
