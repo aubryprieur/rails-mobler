@@ -58,9 +58,9 @@ puts 'Finished! ---) USER OK'
 
 puts 'Creating whislists...'
 wishlist1 = Wishlist.create!(
-  title: "Ma chambre",
-  description: "Remplacer la commode",
-  user: user1,
+  title: "Le salon",
+  description: "Trouver un canapé 2 places pour la colocation",
+  user: user3,
   )
 wishlist2 = Wishlist.create!(
   title: "Le bureau",
@@ -70,17 +70,17 @@ wishlist2 = Wishlist.create!(
 wishlist3 = Wishlist.create!(
   title: "La chambre",
   description: "trouver le nouveau bureau de travail",
-  user: user1,
+  user: user2,
   )
 wishlist4 = Wishlist.create!(
-  title: "Le salon",
+  title: "Le salon2",
   description: "Trouver un table basse",
   user: user2,
   )
 wishlist5 = Wishlist.create!(
   title: "La salle de bain",
   description: "Trouver une  nouvelle étagère",
-  user: user3,
+  user: user1,
   )
 wishlist6 = Wishlist.create!(
   title: "La piscine",
@@ -504,23 +504,23 @@ puts 'Finished! ---) GUEST-WISHLIST OK'
 
 puts 'Creating reviews...'
 review1 = Review.create!(
-  content: "La couleur est pas mal, ne sais pas si ça va coller avec la déco de la pièce",
+  content: "La couleur est pas mal.",
   furnitures_wishlist: furniturewishlist1,
   user: user1
   )
 review2 = Review.create!(
-  content: "Les dimensions sont nickels pour remplacer mon vieux meuble",
+  content: "Les dimensions sont parfaites.",
   furnitures_wishlist: furniturewishlist1,
   user: user2
   )
 review3 = Review.create!(
   content: "Le meuble donne l'impression d'être solide",
-  furnitures_wishlist: furniturewishlist1,
+  furnitures_wishlist: furniturewishlist2,
   user: user2
   )
 review4 = Review.create!(
   content: "Je préfère une autre couleur dommage! Mais je le garde de coté quand même",
-  furnitures_wishlist: furniturewishlist1,
+  furnitures_wishlist: furniturewishlist2,
   user: user3
   )
 review5 = Review.create!(
