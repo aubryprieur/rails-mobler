@@ -1,4 +1,21 @@
 <%= render 'banner' %>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $("#ex2").slider({});
+  <% end %>
+<% end %>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $("#ex3").slider({});
+  <% end %>
+<% end %>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $("#ex4").slider({});
+  <% end %>
+<% end %>
 
 
 <div class="container padding-bottom-2x padding-top-3x padding-top-3x mb-2">
@@ -36,13 +53,13 @@
   </div>
   <div class="row">
     <div class="col-md-4 mb-30 text-center">
-      <%= image_tag "guillaume.jpeg", class: 'd-block w-150 mx-auto img-thumbnail rounded-circle mb-2'%>
+      <%= image_tag "guillaume.png", class: 'd-block w-150 mx-auto img-thumbnail rounded-circle mb-2'%>
       <h6>Picard director</h6>
       <p class="text-muted mb-2">Paperpong director</p>
       <div class="social-bar"><a class="social-button shape-circle sb-skype" href="#" data-toggle="tooltip" data-placement="top" title="Skype"><i class="socicon-skype"></i></a><a class="social-button shape-circle sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button shape-circle sb-paypal" href="#" data-toggle="tooltip" data-placement="top" title="PayPal"><i class="socicon-paypal"></i></a></div>
     </div>
     <div class="col-md-4 mb-30 text-center">
-      <%= image_tag "bertrand.jpeg", class: 'd-block w-150 mx-auto img-thumbnail rounded-circle mb-2'%>
+      <%= image_tag "bertrand.png", class: 'd-block w-150 mx-auto img-thumbnail rounded-circle mb-2'%>
       <h6>Bertrand Matelart</h6>
       <p class="text-muted mb-2">Belgium Director</p>
       <div class="social-bar"><a class="social-button shape-circle sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button shape-circle sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a><a class="social-button shape-circle sb-email" href="#" data-toggle="tooltip" data-placement="top" title="Email"><i class="socicon-mail"></i></a></div>
@@ -56,21 +73,4 @@
   </div>
 </div>
 
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-    $("#ex2").slider({});
-  <% end %>
-<% end %>
-
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-    $("#ex3").slider({});
-  <% end %>
-<% end %>
-
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-    $("#ex4").slider({});
-  <% end %>
-<% end %>
 
